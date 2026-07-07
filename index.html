@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ファクトリーギア｜Google広告パフォーマンスレポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAFAFB;--elev:#FFFFFF;--sunk:#F4F4F7;--ink:#15161B;--ink2:#2C2E38;
+  --muted:#71727F;--faint:#9C9DA8;--line:#ECEDF1;
+  --accent:#4C5BD4;--accent-strong:#3A47B8;--accent-tint:#EEF0FC;--accent-soft:rgba(76,91,212,.10);
+  --ok:#2F9E6B;--ok-tint:#ECF7F1;--warn:#C2761C;--warn-tint:#FBF2E6;
+  --violet:#7A4FE0;--teal:#0E9AA0;--loss:#D64545;--loss-tint:#FBEAEA;
+  --r:13px;--r-lg:18px;--r-xl:26px;
+  --shadow-sm:0 1px 2px rgba(20,22,40,.04),0 1px 3px rgba(20,22,40,.05);
+  --shadow-md:0 6px 20px -6px rgba(20,22,40,.12),0 2px 6px -2px rgba(20,22,40,.06);
+  --shadow-lg:0 30px 60px -22px rgba(20,22,40,.24),0 8px 20px -8px rgba(20,22,40,.10);
+  --display:"Space Grotesk","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+  --body:"Inter","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --maxw:1080px;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;
+  -webkit-font-smoothing:antialiased;padding-bottom:80px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 80%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:var(--maxw);margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:12px}
+.mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:#fff;font-family:var(--display);
+  font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.brand b{font-family:var(--display);font-size:14px;font-weight:600;display:block;letter-spacing:-.01em}
+.brand span{font-size:11px;color:var(--muted)}
+.hero{padding:56px 0 30px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-strong);display:inline-flex;align-items:center;gap:9px;font-weight:500}
+.eyebrow::before{content:"";width:22px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(27px,4vw,40px);letter-spacing:-.02em;
+  margin:16px 0 0;line-height:1.15}
+.hero-sub{color:var(--muted);font-size:15.5px;margin-top:14px;max-width:62ch}
+.chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:11.5px;color:var(--ink2);background:var(--elev);
+  border:1px solid var(--line);border-radius:999px;padding:5px 12px;box-shadow:var(--shadow-sm)}
+.chip.accent{background:var(--accent-tint);color:var(--accent-strong);border-color:transparent}
+.sechead{margin:46px 0 18px}
+.sec-title{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.01em;margin-top:8px}
+.sec-note{color:var(--muted);font-size:13.5px;margin-top:6px;max-width:70ch}
+.kpi-row,.summary-grid{display:grid;gap:12px}
+.summary-grid{grid-template-columns:repeat(4,1fr);margin-top:8px}
+.kpi-row{grid-template-columns:repeat(4,1fr);margin:0 0 18px}
+.kpi{background:var(--elev);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:3px}
+.kpi-label{font-size:12px;color:var(--muted);font-weight:500}
+.kpi-val{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.01em}
+.kpi-sub{font-size:11px;color:var(--faint)}
+.card{background:var(--elev);border:1px solid var(--line);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-md);padding:22px;margin-bottom:20px}
+.campaign{border-top:3px solid var(--accent)}
+.campaign[data-accent="violet"]{border-top-color:var(--violet)}
+.campaign[data-accent="teal"]{border-top-color:var(--teal)}
+.camp-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.camp-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--faint)}
+.camp-head h3{font-family:var(--display);font-size:18px;font-weight:600}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+.tbl th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tbody tr:hover{background:var(--sunk)}
+.tbl .r{text-align:right;font-variant-numeric:tabular-nums}
+.tbl th.r{text-align:right}
+.mono{font-family:var(--mono);font-size:12px}
+.muted{color:var(--faint);font-size:11px}
+.barwrap{height:5px;background:var(--sunk);border-radius:3px;margin-top:5px;overflow:hidden}
+.bar{height:100%;background:var(--accent);border-radius:3px}
+.bar-ok{background:var(--ok)}
+.split{margin:12px 0}
+.split-head{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
+.split-head b{font-weight:600}
+.split-bar{height:14px;border-radius:7px;overflow:hidden;display:flex;background:var(--sunk)}
+.seg{height:100%}
+.seg-a{background:var(--accent)}
+.seg-b{background:var(--violet)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:2px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:middle}
+.tbl tfoot td{border-top:1.5px solid var(--line);font-weight:600;background:var(--sunk)}
+.note-inline{font-size:12.5px;color:var(--muted);margin-top:12px;padding:12px 14px;background:var(--sunk);
+  border-radius:var(--r);border:1px solid var(--line)}
+.note-inline b{color:var(--ink2)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 18px}
+.pill{font-family:var(--mono);font-size:11px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);
+  display:inline-flex;align-items:center;gap:6px}
+.pill-ok{background:var(--ok-tint);color:var(--ok);border-color:transparent}
+.pill-ok::before{content:"✓";font-weight:700}
+.pill-none{background:var(--sunk);color:var(--faint)}
+.pill-none::before{content:"—"}
+.drill-title{font-family:var(--display);font-size:14px;font-weight:600;margin:18px 0 8px;color:var(--ink2);
+  display:flex;align-items:center;gap:8px}
+.drill-title .lv{font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em}
+.placeholder{border:1.5px dashed color-mix(in srgb,var(--line) 60%,var(--faint));border-radius:var(--r);
+  padding:16px 18px;color:var(--muted);font-size:12.5px;background:repeating-linear-gradient(45deg,transparent,transparent 8px,var(--sunk) 8px,var(--sunk) 9px);margin-top:6px}
+.placeholder b{color:var(--warn)}
+.miss{color:var(--faint)}
+tr.gap td{color:var(--faint);background:var(--warn-tint)}
+.h4sec{font-family:var(--display);font-size:15px;font-weight:600;margin:8px 0 12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.callout{background:var(--warn-tint);border:1px solid color-mix(in srgb,var(--warn) 30%,var(--line));
+  border-radius:var(--r-lg);padding:20px 22px}
+.callout h3{font-family:var(--display);font-size:16px;color:var(--warn);margin-bottom:10px}
+.callout ol{margin-left:18px;font-size:13.5px;color:var(--ink2)}
+.callout li{margin:7px 0}
+.insights{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.insight{background:var(--elev);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow-sm)}
+.insight b{font-family:var(--display);font-size:14.5px;display:block;margin-bottom:5px}
+.insight p{font-size:13px;color:var(--muted)}
+.insight.ok{border-left-color:var(--ok)}
+.insight.warn{border-left-color:var(--warn)}
+footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:var(--faint);font-size:12px}
+@media(max-width:820px){.summary-grid,.kpi-row{grid-template-columns:repeat(2,1fr)}
+  .two-col,.insights,.dgrid{grid-template-columns:1fr}
+  .funnel .fl{width:100%!important}}
+/* --- 提案パート --- */
+.prop-lead{background:linear-gradient(180deg,var(--accent-tint),var(--elev));
+  border:1px solid color-mix(in srgb,var(--accent) 20%,var(--line));border-radius:var(--r-lg);
+  padding:24px 26px;box-shadow:var(--shadow-md)}
+.lead-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--accent-strong);text-transform:uppercase}
+.prop-lead p{font-size:16px;line-height:1.85;margin-top:12px;color:var(--ink2)}
+.prop-lead strong{color:var(--ink);font-weight:600}
+.issue{background:var(--elev);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-md);
+  padding:24px 26px;margin-bottom:18px;position:relative;overflow:hidden}
+.issue::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--warn)}
+.issue-head{display:flex;gap:16px;align-items:flex-start}
+.issue-num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--warn-tint);color:var(--warn);
+  font-family:var(--display);font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center}
+.issue-title{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.4}
+.issue-body{margin-top:13px;font-size:14.5px;line-height:1.9;color:var(--ink2)}
+.issue-body b{color:var(--ink);font-weight:600}
+.issue-body .sub{color:var(--muted);font-size:13px;border-left:2px solid var(--warn);padding-left:12px;margin-top:10px}
+.evi{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.stat{background:var(--sunk);border-radius:var(--r);padding:12px 16px;min-width:130px}
+.stat .v{font-family:var(--display);font-weight:600;font-size:24px;line-height:1}
+.stat .l{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
+.stat.warn .v{color:var(--warn)}
+.stat.ok .v{color:var(--ok)}
+.minibar{height:11px;border-radius:6px;background:var(--sunk);display:flex;overflow:hidden}
+.minibar .a{background:var(--warn)}
+.minibar .b{background:var(--accent)}
+.takeaway{background:var(--ink);color:#fff;border-radius:var(--r);padding:14px 18px;margin-top:16px;font-size:13.5px;line-height:1.7}
+.takeaway b{color:#fff;font-weight:600}
+.takeaway .tk{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#9C9DA8;text-transform:uppercase;display:block;margin-bottom:5px}
+.funnel{display:flex;flex-direction:column;align-items:center;gap:5px;margin:6px 0}
+.fl{border-radius:9px;padding:12px 16px;text-align:center;background:var(--sunk);border:1px solid var(--line);position:relative}
+.fl .ft{font-weight:600;font-size:14px;color:var(--ink2)}
+.fl .fd{font-size:12px;color:var(--faint);margin-top:2px}
+.fl.covered{background:var(--accent-tint);border-color:color-mix(in srgb,var(--accent) 32%,var(--line))}
+.fl.covered .ft{color:var(--accent-strong)}
+.fl .tag{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;white-space:nowrap;color:var(--faint)}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.diagram{background:var(--elev);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:22px}
+.diagram h4{font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:4px}
+.diagram .what{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.flow{display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;gap:12px;align-items:center}
+.flow-ic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--accent-tint);color:var(--accent-strong);
+  font-family:var(--display);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.flow-tx{font-size:13.5px;line-height:1.55}
+.flow-tx b{font-weight:600}
+.flow-arrow{width:2px;height:12px;background:var(--line);margin:3px 0 3px 16px}
+.mocksearch{border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:13px;color:var(--muted);
+  display:flex;align-items:center;gap:8px;background:var(--sunk)}
+.mockrow{display:flex;gap:10px;margin-top:12px}
+.mockcard{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--elev)}
+.mockimg{height:56px;border-radius:6px;background:linear-gradient(135deg,var(--sunk),var(--accent-tint));
+  display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;text-align:center;padding:4px}
+.mockcard .price{font-family:var(--display);font-weight:600;font-size:14px;margin-top:8px}
+.mockcard .shop{font-size:10.5px;color:var(--faint)}
+.formula{background:var(--ink);color:#fff;border-radius:var(--r);padding:20px 22px;text-align:center;margin-top:6px}
+.formula .eq{font-family:var(--display);font-size:22px;font-weight:600;letter-spacing:.01em}
+.formula .eq small{font-size:14px;color:#B9BAC6;font-weight:400}
+.scenario{background:var(--elev);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;box-shadow:var(--shadow-sm)}
+.scenario.win{border-top:3px solid var(--ok)}
+.scenario.lose{border-top:3px solid var(--loss)}
+.scenario h5{font-family:var(--display);font-size:15px;font-weight:600;display:flex;justify-content:space-between;
+  align-items:center;gap:8px}
+.badge-res{font-family:var(--mono);font-size:11px;padding:4px 11px;border-radius:999px;white-space:nowrap}
+.badge-res.win{background:var(--ok-tint);color:var(--ok)}
+.badge-res.lose{background:var(--loss-tint);color:var(--loss)}
+.ledger{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:14px}
+.ledger td{padding:8px 2px;border-bottom:1px solid var(--line)}
+.ledger td.r{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:500}
+.ledger .muted2{color:var(--faint);font-size:11.5px}
+.ledger tr.result td{border-top:2px solid var(--ink);border-bottom:none;font-weight:700;padding-top:11px;font-size:15px}
+.profit{color:var(--ok)}
+.loss{color:var(--loss)}
+.be-note{font-size:12px;color:var(--muted);margin-top:10px;padding:8px 12px;background:var(--sunk);border-radius:8px}
+.roadmap{position:relative;margin-top:8px}
+.roadmap::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.phase{position:relative;display:flex;gap:18px;padding-bottom:20px}
+.phase:last-child{padding-bottom:0}
+.pnode{flex:none;width:48px;height:48px;border-radius:14px;background:var(--accent);color:#fff;
+  font-family:var(--display);font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;
+  z-index:1;box-shadow:0 0 0 5px var(--bg)}
+.phase.prep .pnode{background:var(--warn)}
+.phase-card{flex:1;background:var(--elev);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:18px 22px;box-shadow:var(--shadow-sm)}
+.phase-card .ph-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--faint);text-transform:uppercase}
+.phase-card h4{font-family:var(--display);font-size:17px;font-weight:600;margin:2px 0 6px}
+.phase-card .obj{font-size:13px;color:var(--muted);margin-bottom:10px}
+.phase-card ul{margin:0 0 0 18px;font-size:13.5px;line-height:1.85;color:var(--ink2)}
+.phase-card ul b{color:var(--ink);font-weight:600}
+.phase-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ptag{font-family:var(--mono);font-size:10.5px;padding:4px 11px;border-radius:999px;background:var(--accent-tint);color:var(--accent-strong)}
+.ptag.prep{background:var(--warn-tint);color:var(--warn)}
+.tabbar-wrap{position:sticky;top:53px;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabbar{max-width:var(--maxw);margin:0 auto;padding:9px 22px;display:flex;gap:8px}
+.tab{font-family:var(--display);font-size:14px;font-weight:500;color:var(--muted);background:transparent;
+  border:1px solid transparent;border-radius:999px;padding:8px 22px;cursor:pointer;transition:all .18s;
+  display:inline-flex;align-items:center;gap:7px}
+.tab .tab-tag{font-family:var(--mono);font-size:10px;color:var(--faint)}
+.tab:hover{color:var(--ink);background:var(--sunk)}
+.tab.is-active{color:var(--accent-strong);background:var(--accent-tint);
+  border-color:color-mix(in srgb,var(--accent) 25%,var(--line))}
+.tab.is-active .tab-tag{color:var(--accent)}
+.tabpanel[hidden]{display:none}
+.empty-state{margin:60px 0;padding:56px 32px;text-align:center;border:1.5px dashed color-mix(in srgb,var(--line) 60%,var(--faint));
+  border-radius:var(--r-xl);background:var(--elev)}
+.empty-state .em-mark{font-family:var(--display);font-size:13px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
+.empty-state h2{font-family:var(--display);font-size:24px;margin:14px 0 8px}
+.empty-state p{color:var(--muted);font-size:14px;max-width:52ch;margin:0 auto}
+/* --- motion / hover --- */
+html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}
+.card,.kpi,.diagram,.scenario,.issue,.phase-card,.insight,.mockcard,.stat{
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover,.diagram:hover,.scenario:hover,.issue:hover,.phase-card:hover{
+  transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);
+  border-color:color-mix(in srgb,var(--accent) 25%,var(--line))}
+.insight:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.mockcard:hover,.stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.chip,.pill,.ptag,.tab{transition:transform .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}
+.chip:hover,.ptag:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.tab:hover{transform:translateY(-1px)}
+.pnode{transition:transform .2s ease,box-shadow .2s ease}
+.phase:hover .pnode{transform:scale(1.08)}
+.fl{transition:transform .18s ease,box-shadow .18s ease}
+.fl:hover{transform:translateX(5px);box-shadow:var(--shadow-sm)}
+.tbl tbody tr{transition:background .12s ease}
+.eyebrow,.h4sec,.drill-title{transition:color .2s ease}
+@keyframes growx{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.bar{transform-origin:left;animation:growx .7s cubic-bezier(.2,.7,.2,1) both}
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .55s ease,transform .55s ease}
+.show-anim{animation:fadeUp .42s ease both}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+  .bar,.show-anim{animation:none!important}
+  .reveal{opacity:1!important;transform:none!important}}
+@media print{body{background:#fff}.topbar,.tabbar-wrap{position:static}.card,.kpi{box-shadow:none}
+  .tabpanel[hidden]{display:block !important}.reveal{opacity:1!important;transform:none!important}
+  .kpi,.stat,.diagram,.scenario,.issue,.phase,.prop-lead,.formula,.insight,.mockcard,.kpi-row,.split,.tbl tr,.takeaway,.note-inline,.placeholder{break-inside:avoid}
+  .sechead,.h4sec,.drill-title,.camp-head{break-after:avoid}
+  section{break-before:auto}}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="mark">FG</div>
+    <div class="brand"><b>ファクトリーギア</b><span>Google広告 パフォーマンスレポート</span></div>
+  </div>
+</header>
+
+<div class="tabbar-wrap">
+  <div class="tabbar" role="tablist">
+    <button class="tab is-active" data-tab="report" role="tab"><span class="tab-tag">01</span>レポート</button>
+    <button class="tab" data-tab="proposal" role="tab"><span class="tab-tag">02</span>提案</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="tabpanel" id="panel-report">
+  <section class="hero">
+    <span class="eyebrow">Google Ads Performance</span>
+    <h1>指名検索・DEEN・P-MAX の実績サマリ</h1>
+    <p class="hero-sub">受領した広告データをもとに、指名/DEEN検索（3ヶ月）とP-MAX 3キャンペーン（月次9点）の実績を整理しました。小計・複製行を除外し、検索語句レポートの合計値と突き合わせて検証済みです。</p>
+    <div class="chips">
+      <span class="chip accent">検索: 2026年3月1日 – 5月31日（3ヶ月）</span>
+      <span class="chip">P-MAX: 2025年5月〜2026年5月（9点・一部欠測）</span>
+      <span class="chip">通貨: JPY</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="eyebrow">01 · 全体（All Channels）</span>
+      <h2 class="sec-title">全体 ― 全期間合計 → 月別 → 週別 → 日別</h2>
+      <p class="sec-note">マクロ（全体合計）からミクロ（日別）へブレイクダウンする構成です。<b>受領データにない粒度は「未取得」、配信のない月は「欠測」</b>として隠さず明示します。検索は3ヶ月合計、P-MAXは月次のため、公平に合算できるのは<b>両者が揃う2026年3–5月</b>です。</p>
+    </div>
+    <div class="pills">
+      <span class="pill pill-ok">全期間合計</span>
+      <span class="pill pill-ok">月別（P-MAXのみ）</span>
+      <span class="pill pill-none">週別</span>
+      <span class="pill pill-none">日別</span>
+    </div>
+    <div class="card">
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計 ― 同一期間 2026年3月–5月（検索＋P-MAX）</div>
+      <div class="kpi-row"><div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥2,266,629</span><span class="kpi-sub">検索＋P-MAX</span></div><div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">1,873</span></div><div class="kpi"><span class="kpi-label">コンバージョン値</span><span class="kpi-val">¥42,344,539</span></div><div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">1,868%</span><span class="kpi-sub">コンバージョン値 / 費用</span></div></div>
+      <div class="split"><div class="split-head"><b>広告費の構成</b><span class="muted">検索 32% ／ P-MAX 68%</span></div><div class="split-bar"><div class="seg seg-a" style="width:31.598289795109828%"></div><div class="seg seg-b" style="width:68.40171020489018%"></div></div></div><div class="split"><div class="split-head"><b>コンバージョンの構成</b><span class="muted">検索 69% ／ P-MAX 31%</span></div><div class="split-bar"><div class="seg seg-a" style="width:68.65605493466896%"></div><div class="seg seg-b" style="width:31.34394506533104%"></div></div></div><div class="split"><div class="split-head"><b>コンバージョン値の構成</b><span class="muted">検索 74% ／ P-MAX 26%</span></div><div class="split-bar"><div class="seg seg-a" style="width:73.65722887021762%"></div><div class="seg seg-b" style="width:26.342771129782378%"></div></div></div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>検索（指名＋DEEN）</span><span><i style="background:var(--violet)"></i>P-MAX（3キャンペーン）</span></div>
+      <div class="note-inline">この3ヶ月では、<b>検索は広告費の約3割で、CVの約7割・コンバージョン値の約7割を獲得</b>。P-MAXは費用の大半を占めますがROASは相対的に低め。獲得（検索）と拡張（P-MAX）で役割が明確に分かれています。</div>
+    </div>
+
+    <div class="card">
+      <div class="camp-head"><span class="camp-tag">チャネル別</span><h3>各チャネルの実績（それぞれの全期間）</h3></div>
+      <table class="tbl">
+        <thead><tr><th>チャネル</th><th>期間</th><th class="r">広告費</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td>指名検索</td><td class='mono'>2026/3–5（3ヶ月）</td><td class='r'>¥688,002</td><td class='r'>1,237</td><td class='r'>¥30,546,389</td><td class='r'>4,440%</td></tr><tr><td>DEEN検索</td><td class='mono'>2026/3–5（3ヶ月）</td><td class='r'>¥28,214</td><td class='r'>49</td><td class='r'>¥643,425</td><td class='r'>2,281%</td></tr><tr><td>P-MAX ①（全体）</td><td class='mono'>2025/5–2026/5（9点）</td><td class='r'>¥1,846,831</td><td class='r'>1,416</td><td class='r'>¥27,168,643</td><td class='r'>1,471%</td></tr><tr><td>P-MAX ②（全体）</td><td class='mono'>2025/5–2026/5（9点）</td><td class='r'>¥1,558,560</td><td class='r'>438</td><td class='r'>¥9,220,867</td><td class='r'>592%</td></tr><tr><td>P-MAX DEEN</td><td class='mono'>2025/5–2026/5（9点）</td><td class='r'>¥1,700,742</td><td class='r'>886</td><td class='r'>¥15,195,794</td><td class='r'>893%</td></tr></tbody>
+        <tfoot><tr><td>検索 計</td><td class='mono'>3ヶ月</td><td class='r'>¥716,216</td><td class='r'>1,286</td><td class='r'>¥31,189,814</td><td class='r'>4,355%</td></tr><tr><td>P-MAX 計</td><td class='mono'>9点</td><td class='r'>¥5,106,133</td><td class='r'>2,740</td><td class='r'>¥51,585,304</td><td class='r'>1,010%</td></tr></tfoot>
+      </table>
+      <div class="note-inline"><b>参考｜全期間の単純合算（期間混在）:</b> 広告費 ¥5,822,349 ／ CV 4,026 ／ コンバージョン値 ¥82,775,118 ／ ROAS 1,422%。
+      検索3ヶ月とP-MAX9ヶ月を機械的に足した値のため、効率指標の解釈には上の同一期間サマリを使ってください。</div>
+    </div>
+
+    <div class="card">
+      <div class="drill-title"><span class="lv">MONTH</span>全体 月別推移（連続13ヶ月・欠測は明示）</div>
+      <div class="note-inline" style="margin:0 0 12px"><b>注記:</b> 全体の月別は<b>P-MAX 3キャンペーンの合算</b>です。検索（指名・DEEN）は月別データが未取得（2026/3–5の合計のみ）のため、この推移には含めていません。2025年11月〜2026年2月は配信データが欠測です。</div>
+      <table class="tbl">
+        <thead><tr><th>月</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td class='mono'>2025年5月</td><td class='r'>2,360,155</td><td class='r'>43,350</td><td class='r'>¥544,609<div class="barwrap"><div class="bar " style="width:67%"></div></div></td><td class='r'>409</td><td class='r'>¥6,735,153</td><td class='r'>1,237%</td></tr><tr><td class='mono'>2025年6月</td><td class='r'>2,324,931</td><td class='r'>47,254</td><td class='r'>¥568,798<div class="barwrap"><div class="bar " style="width:70%"></div></div></td><td class='r'>470</td><td class='r'>¥8,868,534</td><td class='r'>1,559%</td></tr><tr><td class='mono'>2025年7月</td><td class='r'>2,359,128</td><td class='r'>31,557</td><td class='r'>¥428,577<div class="barwrap"><div class="bar " style="width:53%"></div></div></td><td class='r'>308</td><td class='r'>¥5,894,802</td><td class='r'>1,375%</td></tr><tr><td class='mono'>2025年8月</td><td class='r'>2,210,794</td><td class='r'>25,916</td><td class='r'>¥506,654<div class="barwrap"><div class="bar " style="width:62%"></div></div></td><td class='r'>185</td><td class='r'>¥3,138,535</td><td class='r'>619%</td></tr><tr><td class='mono'>2025年9月</td><td class='r'>1,476,500</td><td class='r'>41,549</td><td class='r'>¥692,038<div class="barwrap"><div class="bar " style="width:85%"></div></div></td><td class='r'>409</td><td class='r'>¥7,741,455</td><td class='r'>1,119%</td></tr><tr><td class='mono'>2025年10月</td><td class='r'>1,358,862</td><td class='r'>44,655</td><td class='r'>¥815,044<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>372</td><td class='r'>¥8,052,100</td><td class='r'>988%</td></tr><tr class='gap'><td class='mono'>2025年11月</td><td class='r' colspan='6'>欠測（配信データなし／未取得）</td></tr><tr class='gap'><td class='mono'>2025年12月</td><td class='r' colspan='6'>欠測（配信データなし／未取得）</td></tr><tr class='gap'><td class='mono'>2026年1月</td><td class='r' colspan='6'>欠測（配信データなし／未取得）</td></tr><tr class='gap'><td class='mono'>2026年2月</td><td class='r' colspan='6'>欠測（配信データなし／未取得）</td></tr><tr><td class='mono'>2026年3月</td><td class='r'>1,737,293</td><td class='r'>38,199</td><td class='r'>¥701,316<div class="barwrap"><div class="bar " style="width:86%"></div></div></td><td class='r'>301</td><td class='r'>¥3,960,331</td><td class='r'>565%</td></tr><tr><td class='mono'>2026年4月</td><td class='r'>1,256,393</td><td class='r'>38,359</td><td class='r'>¥503,587<div class="barwrap"><div class="bar " style="width:62%"></div></div></td><td class='r'>157</td><td class='r'>¥4,231,846</td><td class='r'>840%</td></tr><tr><td class='mono'>2026年5月</td><td class='r'>1,091,726</td><td class='r'>31,280</td><td class='r'>¥345,510<div class="barwrap"><div class="bar " style="width:42%"></div></div></td><td class='r'>129</td><td class='r'>¥2,962,548</td><td class='r'>857%</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="drill-title"><span class="lv">WEEK / DAY</span>全体 週別・日別</div>
+      <div class="placeholder"><b>未取得。</b> 週別・日別の全体推移は、受領データ（期間集計スナップショット＋P-MAX月次）からは作成できません。日別ディメンション付きの再エクスポートで、全体・媒体別ともに週/日へ展開できます。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="eyebrow">02 · 媒体別（Per Channel）</span>
+      <h2 class="sec-title">媒体別 ― 各チャネルを同じ粒度軸で</h2>
+      <p class="sec-note">各媒体の先頭に「全期間合計／月別／週別／日別」の取得状況を表示します。あるものは表示、無いものは注釈です。</p>
+    </div>
+
+    <div class="h4sec">検索広告</div>
+
+    <div class="card">
+      <div class="camp-head"><span class="camp-tag">媒体 · 指名検索</span><h3>指名検索（ファクトリーギア）</h3></div>
+      <div class="pills"><span class="pill pill-ok">全期間合計</span><span class="pill pill-none">月別</span><span class="pill pill-none">週別</span><span class="pill pill-none">日別</span></div>
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計（2026年3月1日 – 5月31日（3ヶ月））― ROAS 4,440%・CVR 2.89% と既存需要の獲得として高効率</div>
+      <div class="kpi-row">
+        <div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥688,002</span></div>
+        <div class="kpi"><span class="kpi-label">クリック</span><span class="kpi-val">42,742</span></div>
+        <div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">1,237</span></div>
+        <div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">4,440%</span><span class="kpi-sub">コンバージョン値 / 費用</span></div>
+      </div>
+      <div class="drill-title"><span class="lv">SEGMENT</span>デバイス別内訳（全期間合計）</div>
+      <table class="tbl">
+        <thead><tr><th>デバイス</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費（構成比）</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td>スマートフォン</td><td class='r'>101,602</td><td class='r'>35,506</td><td class='r'>¥583,735<span class='muted'> (85%)</span><div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>1,016</td><td class='r'>¥25,513,498</td><td class='r'>4,371%</td></tr><tr><td>コンピュータ</td><td class='r'>17,790</td><td class='r'>6,036</td><td class='r'>¥95,135<span class='muted'> (14%)</span><div class="barwrap"><div class="bar " style="width:16%"></div></div></td><td class='r'>199</td><td class='r'>¥4,681,037</td><td class='r'>4,920%</td></tr><tr><td>タブレット</td><td class='r'>3,131</td><td class='r'>1,200</td><td class='r'>¥9,132<span class='muted'> (1%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>22</td><td class='r'>¥351,854</td><td class='r'>3,853%</td></tr></tbody>
+      </table>
+      <div class="drill-title"><span class="lv">MONTH / WEEK / DAY</span>月別・週別・日別</div>
+      <div class="placeholder"><b>月別・週別・日別：未取得。</b> この媒体は 2026/3–5 の期間合計のみ受領。日別データを取得すれば、月・週・日の推移に展開できます。</div>
+    </div>
+
+    <div class="card">
+      <div class="camp-head"><span class="camp-tag">媒体 · DEEN検索</span><h3>DEEN検索</h3></div>
+      <div class="pills"><span class="pill pill-ok">全期間合計</span><span class="pill pill-none">月別</span><span class="pill pill-none">週別</span><span class="pill pill-none">日別</span></div>
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計（2026年3月1日 – 5月31日（3ヶ月））― 目標CPA運用。金額は「すべてのコンバージョン値」で、大半がDEEN指名</div>
+      <div class="kpi-row">
+        <div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥28,214</span></div>
+        <div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">49</span></div>
+        <div class="kpi"><span class="kpi-label">コンバージョン値</span><span class="kpi-val">¥643,425</span><span class="kpi-sub">すべてのCV値</span></div>
+        <div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">2,281%</span><span class="kpi-sub">参考（目標はCPA）</span></div>
+      </div>
+      <div class="drill-title"><span class="lv">SEGMENT</span>広告グループ別内訳（全期間合計）</div>
+      <table class="tbl">
+        <thead><tr><th>広告グループ</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費（構成比）</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td>DEEN｜指名</td><td class='r'>8,330</td><td class='r'>2,692</td><td class='r'>¥24,563<span class='muted'> (87%)</span><div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>45</td><td class='r '>¥598,853</td><td class='r '>2,438%</td></tr><tr><td>DEEN｜トルクツール</td><td class='r'>235</td><td class='r'>99</td><td class='r'>¥1,001<span class='muted'> (4%)</span><div class="barwrap"><div class="bar " style="width:4%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr><tr><td>DEEN｜工具セット</td><td class='r'>259</td><td class='r'>130</td><td class='r'>¥885<span class='muted'> (3%)</span><div class="barwrap"><div class="bar " style="width:4%"></div></div></td><td class='r'>0</td><td class='r '>¥11</td><td class='r '>1%</td></tr><tr><td>DEEN｜ライト</td><td class='r'>46</td><td class='r'>17</td><td class='r'>¥622<span class='muted'> (2%)</span><div class="barwrap"><div class="bar " style="width:3%"></div></div></td><td class='r'>1</td><td class='r '>¥3,855</td><td class='r '>620%</td></tr><tr><td>DEEN｜工具箱</td><td class='r'>232</td><td class='r'>82</td><td class='r'>¥595<span class='muted'> (2%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>2</td><td class='r '>¥40,701</td><td class='r '>6,841%</td></tr><tr><td>DEEN｜ハンドル</td><td class='r'>62</td><td class='r'>7</td><td class='r'>¥147<span class='muted'> (1%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr><tr><td>DEEN｜プライヤー</td><td class='r'>17</td><td class='r'>8</td><td class='r'>¥115<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r '>¥2</td><td class='r '>2%</td></tr><tr><td>DEEN.J｜指名</td><td class='r'>28</td><td class='r'>8</td><td class='r'>¥106<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r '>¥3</td><td class='r '>3%</td></tr><tr><td>DEEN｜アダプター・ジョイント</td><td class='r'>3</td><td class='r'>1</td><td class='r'>¥102<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr><tr><td>DEEN｜レンチ・スパナ</td><td class='r'>21</td><td class='r'>6</td><td class='r'>¥78<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr><tr><td>DEEN.J｜レンチ・スパナ</td><td class='r'>1</td><td class='r'>0</td><td class='r'>¥0<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr><tr><td>DEEN.J｜LEDライト</td><td class='r'>1</td><td class='r'>0</td><td class='r'>¥0<span class='muted'> (0%)</span><div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>0</td><td class='r miss'>データなし</td><td class='r miss'>データなし</td></tr></tbody>
+      </table>
+      <div class="drill-title"><span class="lv">MONTH / WEEK / DAY</span>月別・週別・日別</div>
+      <div class="placeholder"><b>月別・週別・日別：未取得。</b> この媒体は 2026/3–5 の期間合計のみ受領。日別データを取得すれば、月・週・日の推移に展開できます。</div>
+    </div>
+
+    <div class="h4sec">P-MAX（Performance Max）</div>
+    
+    <div class="card campaign" data-accent="indigo">
+      <div class="camp-head">
+        <span class="camp-tag">PERFORMANCE MAX</span>
+        <h3>P-MAX ①（3_P-MAX_全体）</h3>
+      </div>
+      <div class="pills"><span class="pill pill-ok">全期間合計</span><span class="pill pill-ok">月別</span><span class="pill pill-none">週別</span><span class="pill pill-none">日別</span></div>
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計（9ヶ月・2025/11–2026/2 は欠測）</div>
+      <div class="kpi-row"><div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥1,846,831</span></div><div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">1,416</span></div><div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">1,471%</span><span class="kpi-sub">コンバージョン値 / 費用</span></div><div class="kpi"><span class="kpi-label">CPA</span><span class="kpi-val">¥1,304</span><span class="kpi-sub">獲得単価</span></div></div>
+      <div class="drill-title"><span class="lv">MONTH</span>月別推移</div>
+      <table class="tbl">
+        <thead><tr><th>月</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td class='mono'>2025年5月</td><td class='r'>274,283</td><td class='r'>24,900</td><td class='r'>¥241,817<div class="barwrap"><div class="bar " style="width:67%"></div></div></td><td class='r'>279<div class="barwrap"><div class="bar bar-ok" style="width:100%"></div></div></td><td class='r'>¥4,614,943</td><td class='r'>1,908%</td></tr><tr><td class='mono'>2025年6月</td><td class='r'>456,084</td><td class='r'>23,156</td><td class='r'>¥269,143<div class="barwrap"><div class="bar " style="width:75%"></div></div></td><td class='r'>244<div class="barwrap"><div class="bar bar-ok" style="width:87%"></div></div></td><td class='r'>¥5,155,959</td><td class='r'>1,916%</td></tr><tr><td class='mono'>2025年7月</td><td class='r'>402,305</td><td class='r'>12,084</td><td class='r'>¥127,618<div class="barwrap"><div class="bar " style="width:35%"></div></div></td><td class='r'>118<div class="barwrap"><div class="bar bar-ok" style="width:42%"></div></div></td><td class='r'>¥2,496,812</td><td class='r'>1,956%</td></tr><tr><td class='mono'>2025年8月</td><td class='r'>231,183</td><td class='r'>6,176</td><td class='r'>¥60,091<div class="barwrap"><div class="bar " style="width:17%"></div></div></td><td class='r'>50<div class="barwrap"><div class="bar bar-ok" style="width:18%"></div></div></td><td class='r'>¥1,011,489</td><td class='r'>1,683%</td></tr><tr><td class='mono'>2025年9月</td><td class='r'>328,865</td><td class='r'>21,309</td><td class='r'>¥236,971<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>255<div class="barwrap"><div class="bar bar-ok" style="width:91%"></div></div></td><td class='r'>¥4,851,337</td><td class='r'>2,047%</td></tr><tr><td class='mono'>2025年10月</td><td class='r'>524,787</td><td class='r'>25,226</td><td class='r'>¥360,009<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>239<div class="barwrap"><div class="bar bar-ok" style="width:86%"></div></div></td><td class='r'>¥5,239,356</td><td class='r'>1,455%</td></tr><tr><td class='mono'>2026年3月</td><td class='r'>706,039</td><td class='r'>14,652</td><td class='r'>¥245,089<div class="barwrap"><div class="bar " style="width:68%"></div></div></td><td class='r'>106<div class="barwrap"><div class="bar bar-ok" style="width:38%"></div></div></td><td class='r'>¥1,665,239</td><td class='r'>679%</td></tr><tr><td class='mono'>2026年4月</td><td class='r'>442,912</td><td class='r'>10,808</td><td class='r'>¥152,110<div class="barwrap"><div class="bar " style="width:42%"></div></div></td><td class='r'>54<div class="barwrap"><div class="bar bar-ok" style="width:19%"></div></div></td><td class='r'>¥764,808</td><td class='r'>503%</td></tr><tr><td class='mono'>2026年5月</td><td class='r'>510,306</td><td class='r'>12,273</td><td class='r'>¥153,983<div class="barwrap"><div class="bar " style="width:43%"></div></div></td><td class='r'>71<div class="barwrap"><div class="bar bar-ok" style="width:25%"></div></div></td><td class='r'>¥1,368,700</td><td class='r'>889%</td></tr></tbody>
+      </table>
+      <div class="drill-title"><span class="lv">WEEK / DAY</span>週別・日別</div>
+      <div class="placeholder"><b>未取得。</b> P-MAXは月次でのみ受領。日別ディメンション付きで再エクスポートすれば週・日に展開できます。</div>
+    </div>
+    
+    <div class="card campaign" data-accent="violet">
+      <div class="camp-head">
+        <span class="camp-tag">PERFORMANCE MAX</span>
+        <h3>P-MAX ②（5_P-MAX_全体）</h3>
+      </div>
+      <div class="pills"><span class="pill pill-ok">全期間合計</span><span class="pill pill-ok">月別</span><span class="pill pill-none">週別</span><span class="pill pill-none">日別</span></div>
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計（9ヶ月・2025/11–2026/2 は欠測）</div>
+      <div class="kpi-row"><div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥1,558,560</span></div><div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">438</span></div><div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">592%</span><span class="kpi-sub">コンバージョン値 / 費用</span></div><div class="kpi"><span class="kpi-label">CPA</span><span class="kpi-val">¥3,558</span><span class="kpi-sub">獲得単価</span></div></div>
+      <div class="drill-title"><span class="lv">MONTH</span>月別推移</div>
+      <table class="tbl">
+        <thead><tr><th>月</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td class='mono'>2025年5月</td><td class='r'>1,132,398</td><td class='r'>7,128</td><td class='r'>¥151,798<div class="barwrap"><div class="bar " style="width:67%"></div></div></td><td class='r'>41<div class="barwrap"><div class="bar bar-ok" style="width:48%"></div></div></td><td class='r'>¥807,230</td><td class='r'>532%</td></tr><tr><td class='mono'>2025年6月</td><td class='r'>1,079,662</td><td class='r'>10,468</td><td class='r'>¥149,636<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>86<div class="barwrap"><div class="bar bar-ok" style="width:100%"></div></div></td><td class='r'>¥1,264,453</td><td class='r'>845%</td></tr><tr><td class='mono'>2025年7月</td><td class='r'>1,037,132</td><td class='r'>7,787</td><td class='r'>¥150,881<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>71<div class="barwrap"><div class="bar bar-ok" style="width:83%"></div></div></td><td class='r'>¥1,459,319</td><td class='r'>967%</td></tr><tr><td class='mono'>2025年8月</td><td class='r'>864,569</td><td class='r'>7,671</td><td class='r'>¥223,715<div class="barwrap"><div class="bar " style="width:98%"></div></div></td><td class='r'>36<div class="barwrap"><div class="bar bar-ok" style="width:42%"></div></div></td><td class='r'>¥774,365</td><td class='r'>346%</td></tr><tr><td class='mono'>2025年9月</td><td class='r'>450,690</td><td class='r'>8,281</td><td class='r'>¥227,690<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>31<div class="barwrap"><div class="bar bar-ok" style="width:36%"></div></div></td><td class='r'>¥697,287</td><td class='r'>306%</td></tr><tr><td class='mono'>2025年10月</td><td class='r'>337,566</td><td class='r'>8,037</td><td class='r'>¥227,368<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>59<div class="barwrap"><div class="bar bar-ok" style="width:69%"></div></div></td><td class='r'>¥1,436,812</td><td class='r'>632%</td></tr><tr><td class='mono'>2026年3月</td><td class='r'>492,955</td><td class='r'>9,311</td><td class='r'>¥228,113<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>62<div class="barwrap"><div class="bar bar-ok" style="width:72%"></div></div></td><td class='r'>¥1,096,800</td><td class='r'>481%</td></tr><tr><td class='mono'>2026年4月</td><td class='r'>279,522</td><td class='r'>8,749</td><td class='r'>¥123,354<div class="barwrap"><div class="bar " style="width:54%"></div></div></td><td class='r'>33<div class="barwrap"><div class="bar bar-ok" style="width:38%"></div></div></td><td class='r'>¥1,050,218</td><td class='r'>851%</td></tr><tr><td class='mono'>2026年5月</td><td class='r'>206,146</td><td class='r'>6,568</td><td class='r'>¥76,005<div class="barwrap"><div class="bar " style="width:33%"></div></div></td><td class='r'>19<div class="barwrap"><div class="bar bar-ok" style="width:22%"></div></div></td><td class='r'>¥634,383</td><td class='r'>835%</td></tr></tbody>
+      </table>
+      <div class="drill-title"><span class="lv">WEEK / DAY</span>週別・日別</div>
+      <div class="placeholder"><b>未取得。</b> P-MAXは月次でのみ受領。日別ディメンション付きで再エクスポートすれば週・日に展開できます。</div>
+    </div>
+    
+    <div class="card campaign" data-accent="teal">
+      <div class="camp-head">
+        <span class="camp-tag">PERFORMANCE MAX</span>
+        <h3>P-MAX DEEN（4_P-MAX_DEEN）</h3>
+      </div>
+      <div class="pills"><span class="pill pill-ok">全期間合計</span><span class="pill pill-ok">月別</span><span class="pill pill-none">週別</span><span class="pill pill-none">日別</span></div>
+      <div class="drill-title"><span class="lv">MACRO</span>全期間合計（9ヶ月・2025/11–2026/2 は欠測）</div>
+      <div class="kpi-row"><div class="kpi"><span class="kpi-label">広告費</span><span class="kpi-val">¥1,700,742</span></div><div class="kpi"><span class="kpi-label">コンバージョン</span><span class="kpi-val">886</span></div><div class="kpi"><span class="kpi-label">ROAS</span><span class="kpi-val">893%</span><span class="kpi-sub">コンバージョン値 / 費用</span></div><div class="kpi"><span class="kpi-label">CPA</span><span class="kpi-val">¥1,920</span><span class="kpi-sub">獲得単価</span></div></div>
+      <div class="drill-title"><span class="lv">MONTH</span>月別推移</div>
+      <table class="tbl">
+        <thead><tr><th>月</th><th class="r">表示回数</th><th class="r">クリック</th>
+        <th class="r">広告費</th><th class="r">CV</th><th class="r">コンバージョン値</th><th class="r">ROAS</th></tr></thead>
+        <tbody><tr><td class='mono'>2025年5月</td><td class='r'>953,474</td><td class='r'>11,322</td><td class='r'>¥150,994<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>89<div class="barwrap"><div class="bar bar-ok" style="width:64%"></div></div></td><td class='r'>¥1,312,980</td><td class='r'>870%</td></tr><tr><td class='mono'>2025年6月</td><td class='r'>789,185</td><td class='r'>13,630</td><td class='r'>¥150,019<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>140<div class="barwrap"><div class="bar bar-ok" style="width:100%"></div></div></td><td class='r'>¥2,448,122</td><td class='r'>1,632%</td></tr><tr><td class='mono'>2025年7月</td><td class='r'>919,691</td><td class='r'>11,686</td><td class='r'>¥150,078<div class="barwrap"><div class="bar " style="width:66%"></div></div></td><td class='r'>119<div class="barwrap"><div class="bar bar-ok" style="width:85%"></div></div></td><td class='r'>¥1,938,671</td><td class='r'>1,292%</td></tr><tr><td class='mono'>2025年8月</td><td class='r'>1,115,042</td><td class='r'>12,069</td><td class='r'>¥222,848<div class="barwrap"><div class="bar " style="width:98%"></div></div></td><td class='r'>99<div class="barwrap"><div class="bar bar-ok" style="width:71%"></div></div></td><td class='r'>¥1,352,681</td><td class='r'>607%</td></tr><tr><td class='mono'>2025年9月</td><td class='r'>696,945</td><td class='r'>11,959</td><td class='r'>¥227,377<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>123<div class="barwrap"><div class="bar bar-ok" style="width:88%"></div></div></td><td class='r'>¥2,192,831</td><td class='r'>964%</td></tr><tr><td class='mono'>2025年10月</td><td class='r'>496,509</td><td class='r'>11,392</td><td class='r'>¥227,667<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>74<div class="barwrap"><div class="bar bar-ok" style="width:53%"></div></div></td><td class='r'>¥1,375,932</td><td class='r'>604%</td></tr><tr><td class='mono'>2026年3月</td><td class='r'>538,299</td><td class='r'>14,236</td><td class='r'>¥228,114<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>133<div class="barwrap"><div class="bar bar-ok" style="width:95%"></div></div></td><td class='r'>¥1,198,292</td><td class='r'>525%</td></tr><tr><td class='mono'>2026年4月</td><td class='r'>533,959</td><td class='r'>18,802</td><td class='r'>¥228,123<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>70<div class="barwrap"><div class="bar bar-ok" style="width:50%"></div></div></td><td class='r'>¥2,416,820</td><td class='r'>1,059%</td></tr><tr><td class='mono'>2026年5月</td><td class='r'>375,274</td><td class='r'>12,439</td><td class='r'>¥115,522<div class="barwrap"><div class="bar " style="width:51%"></div></div></td><td class='r'>39<div class="barwrap"><div class="bar bar-ok" style="width:28%"></div></div></td><td class='r'>¥959,465</td><td class='r'>831%</td></tr></tbody>
+      </table>
+      <div class="drill-title"><span class="lv">WEEK / DAY</span>週別・日別</div>
+      <div class="placeholder"><b>未取得。</b> P-MAXは月次でのみ受領。日別ディメンション付きで再エクスポートすれば週・日に展開できます。</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="eyebrow">Search Terms</span>
+      <h2 class="sec-title">上位検索語句（クリック順・小計除外）</h2>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="camp-head"><span class="camp-tag">指名</span><h3>ファクトリーギア</h3></div>
+        <table class="tbl"><thead><tr><th>検索語句</th><th class="r">クリック</th><th class="r">費用</th><th class="r">CV</th></tr></thead>
+        <tbody><tr><td>ファクトリー ギア</td><td class='r'>36,483<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>¥400,786</td><td class='r'>1,039</td></tr><tr><td>ファクトリー ギア 通販</td><td class='r'>2,235<div class="barwrap"><div class="bar " style="width:6%"></div></div></td><td class='r'>¥12,728</td><td class='r'>64</td></tr><tr><td>factory gear</td><td class='r'>821<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥11,861</td><td class='r'>26</td></tr><tr><td>ファクトリー ギア オンライン</td><td class='r'>534<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥12,295</td><td class='r'>43</td></tr><tr><td>ギア ファクトリー</td><td class='r'>303<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥3,202</td><td class='r'>5</td></tr><tr><td>ファクトリー ギア</td><td class='r'>247<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥6,763</td><td class='r'>1</td></tr><tr><td>factorygear</td><td class='r'>185<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥2,669</td><td class='r'>4</td></tr><tr><td>ファクトリー ギア 通販 佐田</td><td class='r'>65<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥13,207</td><td class='r'>3</td></tr></tbody></table>
+      </div>
+      <div class="card">
+        <div class="camp-head"><span class="camp-tag">DEEN</span><h3>DEEN 関連語</h3></div>
+        <table class="tbl"><thead><tr><th>検索語句</th><th class="r">クリック</th><th class="r">費用</th><th class="r">CV</th></tr></thead>
+        <tbody><tr><td>deen 工具</td><td class='r'>1,466<div class="barwrap"><div class="bar " style="width:100%"></div></div></td><td class='r'>¥8,233</td><td class='r'>20</td></tr><tr><td>deen</td><td class='r'>812<div class="barwrap"><div class="bar " style="width:55%"></div></div></td><td class='r'>¥7,697</td><td class='r'>14</td></tr><tr><td>deen 工具 セット</td><td class='r'>123<div class="barwrap"><div class="bar " style="width:8%"></div></div></td><td class='r'>¥826</td><td class='r'>0</td></tr><tr><td>deen ト ルクレンチ</td><td class='r'>90<div class="barwrap"><div class="bar " style="width:6%"></div></div></td><td class='r'>¥793</td><td class='r'>0</td></tr><tr><td>deen 工具 箱</td><td class='r'>80<div class="barwrap"><div class="bar " style="width:5%"></div></div></td><td class='r'>¥590</td><td class='r'>2</td></tr><tr><td>工具 deen</td><td class='r'>57<div class="barwrap"><div class="bar " style="width:4%"></div></div></td><td class='r'>¥470</td><td class='r'>0</td></tr><tr><td>deen キャビネット</td><td class='r'>31<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥157</td><td class='r'>2</td></tr><tr><td>deen コンビネーション レンチ</td><td class='r'>14<div class="barwrap"><div class="bar " style="width:2%"></div></div></td><td class='r'>¥275</td><td class='r'>0</td></tr></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="eyebrow">Insights</span>
+      <h2 class="sec-title">考察・示唆</h2>
+    </div>
+    <div class="insights">
+      <div class="insight ok"><b>指名検索はスマホ主導で高効率</b><p>費用の大半・CVの大半がスマートフォン。ROASは全体で高く、指名による既存需要の取り込みは十分機能。IS（インプレッションシェア）も9割超で取りこぼしは小さい。</p></div>
+      <div class="insight"><b>P-MAXはキャンペーン間で効率差が大きい</b><p>3_全体がROAS最高、5_全体は相対的に低効率・CPA高め。両者の役割（配信面/商材）の違いを踏まえた予算配分の見直し余地。</p></div>
+      <div class="insight warn"><b>P-MAXに4ヶ月の欠測</b><p>2025年11月〜2026年2月のデータが全キャンペーンで欠落。出稿停止か抽出漏れかで解釈が変わるため要確認。</p></div>
+      <div class="insight"><b>DEEN検索は目標CPA運用・指名に集中</b><p>DEEN検索はコンバージョン値も計上（大半がDEEN指名）だが、最適化は目標CPA（¥700）で件数ベース。費用も「DEEN｜指名」に集中しており、非指名グループの拡張余地は大きい。</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sechead"><span class="eyebrow">Confirmation</span>
+      <h2 class="sec-title">データに関する確認事項</h2>
+    </div>
+    <div class="callout">
+      <h3>クライアント／出稿側に確認したい点</h3>
+      <ol>
+        <li><b>【最重要】日別データの再エクスポート</b>：現データは期間集計スナップショット＋P-MAX月次のみで、週別・日別、および検索の月別が作れません。「日付×キャンペーン/媒体」の日別レポートを連続期間で頂ければ、全体・媒体別とも 全期間→月→週→日 に展開できます。</li>
+        <li><b>「全体」P-MAXが2つ（3_P-MAX_全体 / 5_P-MAX_全体）</b>：数値が別物です。アカウント別・キャンペーン別など、それぞれの役割を確認したい。</li>
+        <li><b>P-MAXの2025年11月〜2026年2月の欠測</b>：出稿停止か、データ抽出時の期間漏れか。</li>
+        <li><b>期間・粒度の不一致</b>：指名/DEEN検索は3ヶ月合計、P-MAXは月次。横並び比較の際は前提差に注意。</li>
+        <li><b>指名検索とDEEN検索で入札指標が異なる</b>：指名＝目標ROAS、DEEN＝目標CPA（¥700）。評価軸が混在するため、統一の見方（利益）で揃えたい。</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    生成日: 2026年7月2日／データ元: ファクトリーギア Google広告エクスポート（変換済みUTF-8 CSV）。
+    数値は小計・複製行を除外し検索語句レポートの合計と照合済み。金額は円・四捨五入。
+  </footer>
+  </div><!-- /panel-report -->
+
+  <div class="tabpanel" id="panel-proposal" hidden>
+    <section class="hero">
+      <span class="eyebrow">Proposal · 提案</span>
+      <h1>事業成長に向けたプロモーション構造の転換</h1>
+      <p class="hero-sub">現状の広告投資は「既存の指名需要の取り込み」に最適化されている。持続的な事業拡大には、需要創出と購買タイミング捕捉への投資配分の再設計が求められる。</p>
+    </section>
+    
+    <section>
+      <div class="prop-lead">
+        <span class="lead-eyebrow">Executive Summary</span>
+        <p>現行のプロモーションは、<strong>ブランド認知という既存資産の換金化</strong>に偏重している。指名検索は高効率だが、その成果は「すでにファクトリーギアを知っている層」の取り込みにとどまり、<strong>認知の総量が成長の上限を規定する</strong>構造にある。事業を次の成長段階へ引き上げるには、<strong>(1) 指名外の新規需要の獲得</strong>、<strong>(2) EC事業の要諦である購買タイミングの捕捉</strong>——この2点への投資配分が不可欠である。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Issues · 現状課題</span>
+        <h2 class="sec-title">事業成長を見据えた際の、現在のプロモーション課題</h2>
+        <p class="sec-note">受領データ（2026年3–5月の実績）にもとづく構造的課題の抽出。</p>
+      </div>
+
+      <div class="issue">
+        <div class="issue-head">
+          <div class="issue-num">1</div>
+          <div style="flex:1">
+            <div class="issue-title">検索広告が「指名検索」に極端に傾倒している</div>
+            <div class="issue-body">
+              検索広告への投資は、その大半がブランド名（＝指名）クエリに向けられている。指名検索は取り逃しの防止には有効だが、<b>これはECサイトの既存認知度に依存した既存需要の取り込みであり、需要そのものを創出する拡大施策ではない</b>。上位検索語の実態も「ファクトリー ギア」等のブランド名がほぼ全てを占め、<b>指名外の一般需要（例：「工具セット」等）を獲得する導線が事実上存在しない</b>。
+              <div class="sub">帰結として、ブランド認知の伸びしろがそのまま成長の天井となり、認知が頭打ちになれば新規獲得も頭打ちとなる。</div>
+            </div>
+            <div class="evi">
+              <div class="stat warn"><div class="v">96%</div><div class="l">検索広告費に占める<br>指名の割合</div></div>
+              <div class="stat warn"><div class="v">96%</div><div class="l">検索CVに占める<br>指名の割合</div></div>
+              <div class="stat ok"><div class="v">4,440%</div><div class="l">指名検索ROAS<br>（高効率＝既存認知の換金）</div></div>
+            </div>
+            <div style="margin-top:16px">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:5px">検索広告費の構成</div>
+              <div class="minibar"><div class="a" style="width:96%"></div><div class="b" style="width:4%"></div></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--faint);margin-top:5px"><span>指名 ¥688,002（96%）</span><span>指名外（DEEN含む）¥28,214（4%）</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-head">
+          <div class="issue-num">2</div>
+          <div style="flex:1">
+            <div class="issue-title">EC領域で必須となる「タイミング捕捉型」施策が未実施</div>
+            <div class="issue-body">
+              ECは、ユーザーが「買いたい」と意識した瞬間をいかに逃さず捉えるかが成果を左右する。この購買タイミングの捕捉を担うのが<b>ショッピング広告</b>と<b>ダイナミック広告</b>であり、拡大を見据える局面では実装がマストとなる。しかし現状の配信は指名中心の検索とP-MAXに限られ、<b>商品軸で購買意欲の顕在層を直接獲得する専用配信が整備されていない</b>。
+              <div class="sub">受領データ上、ショッピング広告・ダイナミック広告の単体配信は確認できない。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Solution · 打ち手</span>
+        <h2 class="sec-title">獲得すべき需要と、そのための施策</h2>
+      </div>
+
+      <div class="card">
+        <div class="h4sec">いま獲れているのは「一番下」だけ ― 需要ファネル</div>
+        <div class="funnel">
+          <div class="fl" style="width:100%"><div class="ft">潜在層｜まだファクトリーギアを知らない</div><div class="fd">これから工具に関心を持つ・情報を集め始める</div><span class="tag">取りこぼし</span></div>
+          <div class="fl" style="width:82%"><div class="ft">比較検討層｜「工具セット」等で商品を探す</div><div class="fd">買う店を決めていない＝獲得の最大チャンス</div><span class="tag">取りこぼし</span></div>
+          <div class="fl" style="width:64%"><div class="ft">顕在層｜特定商品を探している</div><div class="fd">購入意欲が高い</div><span class="tag">一部のみ</span></div>
+          <div class="fl covered" style="width:46%"><div class="ft">指名層｜ファクトリーギアを知っている</div><div class="fd">現在の指名検索でカバー</div><span class="tag" style="color:var(--accent-strong)">✓ 現状ここ</span></div>
+        </div>
+        <div class="takeaway"><span class="tk">Insight</span>現状の獲得はファネル最下部の「既知客」に限定されている。<b>その上に広がる、より大きな需要層（比較検討・潜在）をショッピング／ダイナミックで捕捉することが、成長の天井を引き上げる鍵</b>となる。</div>
+      </div>
+
+      <div class="dgrid">
+        <div class="diagram">
+          <h4>① ショッピング広告</h4>
+          <div class="what">商品を探している人に、検索結果で「商品写真＋価格＋店名」を直接見せる広告。ブランドを知らない人にも届く。</div>
+          <div class="mocksearch"><span style="font-family:var(--mono);color:var(--faint)">検索</span>&nbsp;<span>工具セット　おすすめ</span></div>
+          <div class="mockrow">
+            <div class="mockcard"><div class="mockimg">商品画像</div><div class="price">¥12,800</div><div class="shop">ファクトリーギア</div></div>
+            <div class="mockcard"><div class="mockimg">商品画像</div><div class="price">¥9,980</div><div class="shop">ファクトリーギア</div></div>
+          </div>
+          <div class="flow" style="margin-top:18px">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx"><b>「工具セット」で検索</b>＝商品を探している人</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx">検索結果の一番目立つ場所に<b>写真と価格</b>が並ぶ</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx">値段を見て納得した<b>買う気の高い人</b>がそのままクリック</div></div>
+          </div>
+          <div class="takeaway"><span class="tk">狙い</span>ブランドを知らなくても、<b>「商品を探している瞬間」に指名なしで新規獲得</b>できる。</div>
+        </div>
+
+        <div class="diagram">
+          <h4>② ダイナミック広告（追いかけ型）</h4>
+          <div class="what">サイトで見た商品を、後日ほかのサイトやSNSで「その商品のまま」見せて呼び戻す広告。</div>
+          <div class="flow">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx">サイトで<b>商品Aを見たが、買わずに離脱</b></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx">後日、他サイト／YouTube／SNSで<b>「まさに見た商品A」の広告</b>が表示される</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx">思い出して<b>サイトに戻り、購入</b></div></div>
+          </div>
+          <div class="mockrow" style="margin-top:18px">
+            <div class="mockcard"><div class="mockimg">閲覧した商品A</div><div class="shop" style="margin-top:8px">サイトで見た</div></div>
+            <div class="mockcard"><div class="mockimg">同じ商品Aの広告</div><div class="shop" style="margin-top:8px">後日 SNS／Webで再表示</div></div>
+          </div>
+          <div class="takeaway"><span class="tk">狙い</span>一度訪れた見込み客を<b>取りこぼさず、購入まで引き戻す</b>。EC必須の再獲得施策。</div>
+        </div>
+      </div>
+
+      <div class="note-inline" style="margin-top:18px"><b>まとめ：</b> ①ショッピングで<b>指名外の新規需要</b>を、②ダイナミックで<b>離脱客の再獲得</b>を担う。いずれも指名検索（既存需要の取り込み）と役割が重複せず、<b>成長の天井そのものを引き上げる投資</b>となる。</div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Prerequisite · 実行の前提</span>
+        <h2 class="sec-title">「売れる」と「儲かる」は違う ― 原価・粗利の把握が前提</h2>
+        <p class="sec-note">ショッピング／ダイナミックは商品単位で配信を最適化する施策。原価を踏まえずに統一ROASだけで判断すると、「売れているのに赤字」 を招く。</p>
+      </div>
+
+      <div class="prop-lead">
+        <span class="lead-eyebrow">Why it matters</span>
+        <p>指名検索はROAS 4,440%（約44倍）と極めて高効率のため、利益が出ていることは自明だった。しかしショッピング／ダイナミックは<strong>個々の商品を売り込む配信</strong>であり、ROASは相対的に低くなる。ここで<strong>売上ベースのROASだけを指標にすると、原価の高い（＝粗利の薄い）商品を「売れている」と誤認し、広告費まで含めると赤字——という事態を招く</strong>。ROASは売上しか見ておらず、<strong>原価という最も重要なコストを含んでいない</strong>ためである。</p>
+      </div>
+
+      <div class="card">
+        <div class="h4sec">まず押さえる ― 損益分岐ROAS ＝ 1 ÷ 粗利率</div>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:14px">その広告が「赤字にならない最低ライン」のROAS。<b>粗利率が低い商品ほど、黒字化に必要なROASは高くなる</b>。</p>
+        <div class="formula"><div class="eq">損益分岐ROAS ＝ 1 ÷ 粗利率</div></div>
+        <div class="chips" style="margin-top:16px">
+          <span class="chip">粗利率50% → 200%</span>
+          <span class="chip">粗利率33% → 300%</span>
+          <span class="chip">粗利率25% → 400%</span>
+          <span class="chip">粗利率20% → 500%</span>
+        </div>
+        <div class="note-inline"><b>要点：</b> 商品ごとに「黒字化に必要なROAS」が異なる。全商品を<b>同じ目標ROASで一律に回すと、粗利の薄い商品が損益分岐を割って赤字</b>になる。</div>
+      </div>
+
+      <div class="card">
+        <div class="h4sec">同じ「ROAS 400%・同じ売上」でも、結果は真逆</div>
+        <p style="font-size:13.5px;color:var(--muted);margin-bottom:4px">販売価格 ¥10,000／広告費 ¥2,500（ROAS 400%）で売れた2つの商品。違いは<b>粗利率だけ</b>。</p>
+        <div class="dgrid">
+          <div class="scenario win">
+            <h5>A. 高粗利の商品 <span class="badge-res win">黒字 ＋¥1,500</span></h5>
+            <table class="ledger">
+              <tr><td>販売価格</td><td class="r">¥10,000</td></tr>
+              <tr><td>− 原価 <span class="muted2">（粗利率40%）</span></td><td class="r">− ¥6,000</td></tr>
+              <tr><td>＝ 粗利</td><td class="r">¥4,000</td></tr>
+              <tr><td>− 広告費 <span class="muted2">（ROAS 400%）</span></td><td class="r">− ¥2,500</td></tr>
+              <tr class="result"><td>手残り利益</td><td class="r profit">＋¥1,500</td></tr>
+            </table>
+            <div class="be-note">損益分岐ROAS <b>250%</b> ＜ 実績 400%　→　黒字ライン超え</div>
+          </div>
+          <div class="scenario lose">
+            <h5>B. 低粗利の商品 <span class="badge-res lose">赤字 −¥500</span></h5>
+            <table class="ledger">
+              <tr><td>販売価格</td><td class="r">¥10,000</td></tr>
+              <tr><td>− 原価 <span class="muted2">（粗利率20%）</span></td><td class="r">− ¥8,000</td></tr>
+              <tr><td>＝ 粗利</td><td class="r">¥2,000</td></tr>
+              <tr><td>− 広告費 <span class="muted2">（ROAS 400%）</span></td><td class="r">− ¥2,500</td></tr>
+              <tr class="result"><td>手残り利益</td><td class="r loss">−¥500</td></tr>
+            </table>
+            <div class="be-note">損益分岐ROAS <b>500%</b> ＞ 実績 400%　→　黒字ラインに未達</div>
+          </div>
+        </div>
+        <div class="takeaway"><span class="tk">Point</span>ROASは同じ400%でも、Aは黒字・Bは赤字。<b>統一ROASで運用すると、Bのような低粗利商品を「売れている」と判断して広告費を投じ続け、売れるほど損失が膨らむ</b>。両者を分けるのは、ROASには映らない「原価」である。</div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-head">
+          <div class="issue-num">!</div>
+          <div style="flex:1">
+            <div class="issue-title">現状、利益で評価するためのデータが揃っていない</div>
+            <div class="issue-body">
+              受領データで把握できるのは<b>売上（コンバージョン値）と広告費、すなわちROASまで</b>で、<b>商品ごとの原価・粗利は含まれていない</b>。この状態でショッピング／ダイナミックを統一ROASで拡大すると、赤字商品を検知できない。加えてDEEN検索は目標CPA運用のため、金額（ROAS）ではなく件数・単価で最適化されており、<b>利益の物差しを揃えるには原価・粗利の整備が前提となる</b>。
+              <div class="sub">＝ 施策の前に「商品別の原価・粗利」を広告運用側が参照できる状態にすることが、黒字を担保する前提条件となる。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h4sec">次のステップ（ショッピング／ダイナミック実装前の準備）</div>
+        <div class="flow" style="gap:0">
+          <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx"><b>商品別の原価・粗利率を整備</b>し、広告運用から参照できる状態にする（商品フィードに粗利区分を付与）</div></div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx"><b>粗利率から損益分岐ROASを算出</b>し、商品／カテゴリ群ごとに「利益が残る目標ROAS」を設定（一律ではなく段階設定）</div></div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx"><b>粗利の厚い商品を優先配信</b>、薄い商品は目標ROASを引き上げる／除外し、赤字流入を抑制</div></div>
+          <div class="flow-arrow"></div>
+          <div class="flow-step"><div class="flow-ic">4</div><div class="flow-tx"><b>評価軸を「広告費控除後の利益（限界利益）」に</b>切り替え、売上ROASのみの判断から脱却</div></div>
+        </div>
+        <div class="note-inline"><b>結論：</b> ショッピング／ダイナミックは強力だが、<b>原価・粗利の把握なしに統一ROASで回すと 「売れる赤字」 を量産しかねない</b>。原価データの整備を先行させ、粗利に応じた目標設計で「売れて、かつ儲かる」運用を担保する。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Roadmap · 実行ロードマップ</span>
+        <h2 class="sec-title">何から着手するか ― 優先順位と段階設計</h2>
+        <p class="sec-note">打ち手を「<b>利益を担保しながら、成長の天井を引き上げる</b>」順に配列。土台（原価・計測）を整えてから、獲得チャネルを新規→回収→面拡大の順で広げる。</p>
+      </div>
+
+      <div class="roadmap">
+        <div class="phase prep">
+          <div class="pnode">0</div>
+          <div class="phase-card">
+            <span class="ph-label">Prerequisite ／ 基盤整備</span>
+            <h4>原価・粗利と計測基盤の整備</h4>
+            <p class="obj">目的：利益で判断できる状態をつくる（「売れる赤字」の防止）。以降すべての前提。</p>
+            <ul>
+              <li><b>商品別の原価・粗利率</b>を整備し、商品フィードに粗利区分を付与</li>
+              <li><b>日別×媒体データ</b>の取得・レポート基盤（現状は期間集計のみで時系列が追えない）</li>
+              <li>粗利率から<b>損益分岐ROAS／CPA</b>を算出し、商品群ごとの目標値を設定</li>
+            </ul>
+            <div class="phase-tags"><span class="ptag prep">最優先・前提</span><span class="ptag prep">クライアント依頼</span></div>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="pnode">1</div>
+          <div class="phase-card">
+            <span class="ph-label">Phase 1 ／ 新規需要の獲得</span>
+            <h4>ショッピング広告の開始（粗利の厚い商品群から）</h4>
+            <p class="obj">目的：指名外の「商品を探している層」を獲得し、需要ファネルの中段を埋める。</p>
+            <ul>
+              <li>粗利の厚い商品から配信を開始し、<b>目標ROASは損益分岐を上回る水準</b>に設定</li>
+              <li>粗利の薄い商品は目標を引き上げる／除外し、<b>赤字流入を抑制</b></li>
+              <li>まずは"すぐ回せて成果が見えやすい"入口として先行</li>
+            </ul>
+            <div class="phase-tags"><span class="ptag">比較検討・顕在層</span><span class="ptag">新規獲得</span></div>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="pnode">2</div>
+          <div class="phase-card">
+            <span class="ph-label">Phase 2 ／ 取りこぼしの回収</span>
+            <h4>ダイナミック広告の追加</h4>
+            <p class="obj">目的：サイトを訪れたが離脱した見込み客を、購入まで引き戻す。</p>
+            <ul>
+              <li>商品閲覧データをもとに、<b>離脱客へ同一商品を追跡配信</b></li>
+              <li><b>Phase 1で流入が増えるほど回収効果が乗る</b>ため、順序が重要（新規獲得の"後工程"）</li>
+            </ul>
+            <div class="phase-tags"><span class="ptag">離脱客の再獲得</span><span class="ptag">再獲得の強化</span></div>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="pnode">3</div>
+          <div class="phase-card">
+            <span class="ph-label">Phase 3 ／ 需要の面拡大</span>
+            <h4>非指名（一般キーワード）検索への展開</h4>
+            <p class="obj">目的：指名依存（既存需要の取り込み）から脱し、成長の天井そのものを引き上げる。</p>
+            <ul>
+              <li>成果の出た商品軸から、<b>「工具セット」等の一般キーワード</b>へ検索を拡張</li>
+              <li>現状<b>検索費用の96%を占める指名</b>に依存しない、新規獲得チャネルを構築</li>
+            </ul>
+            <div class="phase-tags"><span class="ptag">潜在・比較検討層</span><span class="ptag">天井の引き上げ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="takeaway"><span class="tk">並走する評価設計</span>全フェーズを通して、評価軸を<b>「広告費控除後の限界利益」</b>に置き、日別データで週次モニタリングする。売上ROASのみの判断から脱却し、「売れて、かつ儲かる」状態を維持する。</div>
+    </section>
+    
+  </div><!-- /panel-proposal -->
+</div>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var tabs = document.querySelectorAll('.tab');
+  var panels = {
+    report: document.getElementById('panel-report'),
+    proposal: document.getElementById('panel-proposal')
+  };
+  function fade(el) {
+    if (reduce) return;
+    el.classList.remove('show-anim');
+    void el.offsetWidth;            // reflow でアニメを再生し直す
+    el.classList.add('show-anim');
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('is-active'); });
+      t.classList.add('is-active');
+      Object.keys(panels).forEach(function (k) { panels[k].hidden = true; });
+      var p = panels[t.dataset.tab];
+      p.hidden = false;
+      fade(p);
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  // スクロールで画面に入った要素をふわっと表示（画面外の要素だけ対象＝初期表示のちらつき防止）
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.01, rootMargin: '0px' });
+    var sel = '.card,.issue,.diagram,.scenario,.phase,.prop-lead,.formula,.callout,.summary-grid';
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight * 0.9) {
+        el.classList.add('reveal');
+        io.observe(el);
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
