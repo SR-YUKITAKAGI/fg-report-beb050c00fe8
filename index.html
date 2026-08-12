@@ -215,6 +215,14 @@ footer{margin-top:50px;padding-top:22px;border-top:1px solid var(--line);color:v
 .phase-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .ptag{font-family:var(--mono);font-size:10.5px;padding:4px 11px;border-radius:999px;background:var(--accent-tint);color:var(--accent-strong)}
 .ptag.prep{background:var(--warn-tint);color:var(--warn)}
+.dgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.own{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:999px;white-space:nowrap;display:inline-block}
+.own.cl{background:var(--warn-tint);color:var(--warn)}
+.own.us{background:var(--accent-tint);color:var(--accent-strong)}
+.own.both{background:var(--sunk);color:var(--muted)}
+.gatecap{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--faint);text-transform:uppercase;margin-bottom:6px}
+.blankline{display:inline-block;min-width:200px;border-bottom:1px dashed var(--faint)}
+.tbl td .step-n{font-family:var(--mono);color:var(--faint);margin-right:6px}
 .tabbar-wrap{position:sticky;top:53px;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .tabbar{max-width:var(--maxw);margin:0 auto;padding:9px 22px;display:flex;gap:8px}
@@ -283,6 +291,7 @@ html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:
     <button class="tab is-active" data-tab="report" role="tab"><span class="tab-tag">01</span>レポート</button>
     <button class="tab" data-tab="proposal" role="tab"><span class="tab-tag">02</span>提案</button>
     <button class="tab" data-tab="proposal2" role="tab"><span class="tab-tag">03</span>提案 2026/07/23</button>
+    <button class="tab" data-tab="prep" role="tab"><span class="tab-tag">04</span>実施準備</button>
   </div>
 </div>
 
@@ -1160,6 +1169,424 @@ html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:
     </section>
     
   </div><!-- /panel-proposal2 -->
+
+  <div class="tabpanel" id="panel-prep" hidden>
+    <section class="hero">
+      <span class="eyebrow">Kickoff · 実施準備 2026年8月13日</span>
+      <h1>配信開始までの準備物とステップ</h1>
+      <p class="hero-sub">ショッピング広告・ダイナミック広告の実施が決定した。現時点で当方は Google広告・Merchant Center・アナリティクス・ECサイトのいずれの権限も保有していないため、まずはアクセス権限の付与から着手する。本日お願いしたい作業と、その後に当方が進める作業を依存順に整理した。</p>
+      <div class="chips">
+        <span class="chip accent">ご依頼 8項目（権限5系統＋データ3点）</span>
+        <span class="chip">権限が揃ってから配信開始まで 最短10営業日</span>
+        <span class="chip">前回提案（03）の Week 0 に接続</span>
+      </div>
+    </section>
+    
+    <section>
+      <div class="prop-lead">
+        <span class="lead-eyebrow">Executive Summary</span>
+        <p>ショッピング広告・ダイナミック広告の実施が決定した。ここから配信開始までの律速は、広告の設計でもクリエイティブでもなく、<strong>「アクセス権限」と「商品フィード」の2点</strong>である。現時点で当方は<strong>Google広告・Merchant Center・Google アナリティクス・ECサイト管理画面のいずれについても権限を保有していない</strong>ため、権限が揃うまで一切の実作業に着手できない。本資料は、2026年8月13日の打ち合わせで<strong>クライアント様にお願いしたい作業</strong>と、<strong>権限受領後に当方が進める作業</strong>を、依存関係の順に整理したものである。なお<strong>新規2施策は当方のGoogle広告アカウントで配信し、広告費のお支払いも当方が行う</strong>。貴社アカウントの既存配信には手を触れない。加えて、実施が決定したことを受け、前回提案で「粗利率25%の仮置きで走り出す」としていた点を改め、<strong>初期設計の段階から商品別の原価・売値の実データを用いる方針へ更新</strong>する。前回提案（03タブ）の Week 0 ゲートに接続する。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Overview · 全体像</span>
+        <h2 class="sec-title">配信開始までに越える3つの関門</h2>
+        <p class="sec-note">個々のタスクは短い。問題は<b>順番に依存があり、待ち時間が入る関門が含まれる</b>ことにある。着手が1日遅れるとそのまま配信開始が1日遅れる構造のため、最初の権限付与を最優先で処理する。</p>
+      </div>
+      <div class="card">
+        <div class="dgrid3">
+          <div class="diagram">
+            <h4>関門1｜アクセス権限</h4>
+            <div class="what">5系統のアカウントに当方を追加いただく。</div>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-ic">○</div><div class="flow-tx">1系統あたり<b>3〜5分</b>の画面操作で完了</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-step"><div class="flow-ic">！</div><div class="flow-tx">難所は作業量ではなく<b>「誰がオーナーか分からない」</b>こと。過去の担当者・代理店の個人アカウントが管理者になっているケースが多い</div></div>
+            </div>
+          </div>
+          <div class="diagram">
+            <h4>関門2｜商品フィード</h4>
+            <div class="what">Merchant Center に全商品データを登録し、審査を通す。</div>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-ic">！</div><div class="flow-tx"><b>ドメイン所有権の確認</b>と<b>商品審査（3〜5営業日）</b>という待ち時間が発生する</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-step"><div class="flow-ic">✓</div><div class="flow-tx">最長の工程。<b>クリティカルパス</b>として最初に着手する</div></div>
+            </div>
+          </div>
+          <div class="diagram">
+            <h4>関門3｜計測タグ</h4>
+            <div class="what">当方アカウント発行のコンバージョンタグと動的リマーケティングタグを設置する。</div>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-ic">！</div><div class="flow-tx">サイト改修を<b>制作会社が担当している場合</b>、見積・スケジュール調整でここが最長化する</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-step"><div class="flow-ic">✓</div><div class="flow-tx">本日中に<b>作業窓口を確定</b>できれば回避できる</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="evi">
+          <div class="stat"><div class="v">8件</div><div class="l">本日お願いしたい<br>権限付与・ご提供項目</div></div>
+          <div class="stat"><div class="v">約60分</div><div class="l">権限付与の画面操作の合計<br>（原価データのご抽出を除く）</div></div>
+          <div class="stat ok"><div class="v">10営業日</div><div class="l">権限が揃ってから<br>配信開始までの最短</div></div>
+          <div class="stat warn"><div class="v">3〜5営業日</div><div class="l">Merchant Center の商品審査<br>（短縮不可の待ち時間）</div></div>
+        </div>
+        <div class="takeaway"><span class="tk">Point</span>本日の会議で決めるべきことは<b>「誰が・いつまでに・どの権限を渡すか」の1点</b>に尽きる。広告の中身はすでに前回提案で確定しており、これ以上の議論を要しない。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Structure · アカウント構成</span>
+        <h2 class="sec-title">新規2施策は、当方のGoogle広告アカウントで配信する</h2>
+        <p class="sec-note">既存の指名検索・DEEN・P-MAXは貴社アカウントで現状のまま継続し、今回のショッピング・ダイナミックのみ当方アカウントで配信します。前回提案の「既存配信に手を触れず、追加予算で検証する」方針を、アカウント単位でも徹底する形になります。</p>
+      </div>
+      <div class="card">
+        <div class="dgrid">
+          <div class="diagram">
+            <h4>貴社アカウント｜既存配信</h4>
+            <div class="what">指名検索・DEEN検索・P-MAX ①②③</div>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-ic">○</div><div class="flow-tx">設定・予算・計測は<b>一切変更しません</b></div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-step"><div class="flow-ic">！</div><div class="flow-tx">当方の権限は<b>現状調査とカニバリ確認のため</b>にお願いするもので、既存配信の停止・変更には使いません</div></div>
+            </div>
+          </div>
+          <div class="diagram">
+            <h4>当方アカウント｜新規2施策 <span class="badge-res win">今回</span></h4>
+            <div class="what">ショッピング広告・ダイナミック広告</div>
+            <div class="flow">
+              <div class="flow-step"><div class="flow-ic">○</div><div class="flow-tx"><b>広告費のお支払いは当方</b>。貴社でのカード登録・与信枠のご確認は不要です</div></div>
+              <div class="flow-arrow"></div>
+              <div class="flow-step"><div class="flow-ic">○</div><div class="flow-tx">既存配信と<b>完全に分離</b>されるため、新施策の成果だけを混じり気なく計測できる</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="h4sec">この構成に伴って必要になること</div>
+        <table class="tbl">
+          <thead><tr><th>項目</th><th>内容</th><th>担当</th></tr></thead>
+          <tbody>
+            <tr><td><b>コンバージョンタグの新規設置</b></td><td>既存のCVタグは貴社アカウントが発行したもので、当方アカウントでは計測できない。<b>当方アカウント発行のCVタグ（購入完了・購入金額付き）をタグマネージャー経由で追加設置</b>する。既存タグはそのまま残し、並存させる</td><td><span class="own us">当方</span></td></tr>
+            <tr><td>リマーケティングタグの帰属</td><td>動的リマーケティングタグも同様に、当方アカウント発行のものを設置する</td><td><span class="own us">当方</span></td></tr>
+            <tr><td>Merchant Center とのリンク承認</td><td>貴社の Merchant Center と当方Adsアカウントのリンクを、MC側で承認いただく（1クリック）</td><td><span class="own cl">クライアント</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="h4sec">アカウントが分かれることの制約 ― 先に共有しておきます</div>
+        <table class="tbl">
+          <thead><tr><th>制約</th><th>影響</th><th>対応</th></tr></thead>
+          <tbody>
+            <tr><td>除外キーワード・オーディエンスが共有されない</td><td>指名クエリの除外設定を、既存アカウントと自動では揃えられない</td><td>既存アカウントの除外リストを参照し、当方アカウント側へ手動で複製・同期する（週次運用に組み込み）</td></tr>
+            <tr><td>コンバージョンが二重に計上され得る</td><td>1件の購入が、貴社アカウントと当方アカウントの<b>両方でCVとして記録される場合がある</b>（両方の広告を経由した場合）</td><td>全体成果を見る際に<b>2アカウントの単純合算をしない</b>。重複の起き方を事前に切り分け、月次レポートで注記する</td></tr>
+            <tr><td>自動入札の学習データは移管できない</td><td>検証後に貴社アカウントへ本格展開する場合、キャンペーンはコピーできても学習はゼロから積み直しになる</td><td>検証で得た<b>目標ROAS・除外語句・商品グループ設計</b>は資産として引き継げる。移管の要否は判定会議（W12）で判断する</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Margin · 原価と売値の整備</span>
+        <h2 class="sec-title">商品を「粗利帯」で分け、帯ごとに目標ROASを設定する</h2>
+        <p class="sec-note">今回の準備で<b>最も重要な作業</b>。すべての商品に同じ目標ROASを設定すると、粗利の薄い商品が「売れている」ように見えたまま赤字を積み上げる。これを構造的に防ぐため、原価と売値から商品を粗利帯に分け、帯ごとに異なる目標ROASを設定する。</p>
+      </div>
+      <div class="card">
+        <div class="h4sec">計算の流れ ― 原価と売値さえあれば、目標ROASは自動的に決まる</div>
+        <div class="formula">
+          <div class="eq">粗利率 ＝（売値 − 原価）÷ 売値<br><small style="display:inline-block;margin-top:10px">損益分岐ROAS ＝ 1 ÷ 粗利率　（この値を割ると、売れるほど赤字になる）</small></div>
+        </div>
+        <table class="tbl" style="margin-top:18px">
+          <thead><tr><th>例</th><th class="r">売値</th><th class="r">原価</th><th class="r">粗利率</th><th class="r">損益分岐ROAS</th><th>ROAS 300%で配信した場合</th></tr></thead>
+          <tbody>
+            <tr><td>高粗利の商品</td><td class="r">¥10,000</td><td class="r">¥5,000</td><td class="r">50%</td><td class="r">200%</td><td class="profit"><b>黒字</b>（分岐を100pt上回る）</td></tr>
+            <tr><td>低粗利の商品</td><td class="r">¥10,000</td><td class="r">¥8,000</td><td class="r">20%</td><td class="r">500%</td><td class="loss"><b>赤字</b>（分岐を200pt下回る）</td></tr>
+          </tbody>
+        </table>
+        <div class="note-inline"><b>同じROAS 300%でも、粗利率が違えば黒字と赤字が逆転する。</b>この2商品を同じキャンペーンに入れて統一の目標ROASで運用すると、広告管理画面上はどちらも「成果が出ている商品」として表示され、赤字が見えないまま配信が拡大していく。</div>
+      </div>
+      <div class="card">
+        <div class="h4sec">粗利帯グルーピングの設計（原価データ受領後に確定する初期案）</div>
+        <table class="tbl">
+          <thead><tr><th>粗利帯</th><th class="r">損益分岐ROAS</th><th class="r">設定する目標ROAS</th><th>配信方針</th></tr></thead>
+          <tbody>
+            <tr><td><b>高｜粗利率 40%以上</b></td><td class="r">250%以下</td><td class="r"><b>300%</b></td><td>積極配信。予算を優先配分し、獲得件数を最大化する</td></tr>
+            <tr><td><b>中｜粗利率 30〜40%</b></td><td class="r">250〜333%</td><td class="r"><b>400%</b></td><td>標準配信。ボリュームの中心となる帯</td></tr>
+            <tr><td><b>低｜粗利率 25〜30%</b></td><td class="r">333〜400%</td><td class="r"><b>500%</b></td><td>抑制配信。効率の良い検索語句に絞って配信する</td></tr>
+            <tr><td><b>対象外｜粗利率 25%未満</b></td><td class="r">400%超</td><td class="r">―</td><td>検証期間中は<b>配信対象から除外</b>。広告で伸ばす前に価格・原価の見直しが先</td></tr>
+          </tbody>
+        </table>
+        <div class="note-inline"><b>目標ROASに安全マージンを乗せる理由：</b>目標ROASは「その水準を狙う」設定であり、実績は上下に振れる。損益分岐と同値で設定すると、振れ幅の下半分がそのまま赤字になる。上表では<b>損益分岐に対して概ね1.2〜1.5倍</b>を初期値とし、実績が安定した段階で段階的に引き下げる。</div>
+      </div>
+      <div class="card">
+        <div class="h4sec">この作業に必要なデータ ― ご提供いただきたい形式</div>
+        <table class="tbl">
+          <thead><tr><th>列</th><th>内容</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td><b>商品ID または JANコード</b></td><td>商品フィードと同じ識別子</td><td>フィードとの突合キー。<b>これが無いと紐付けができない</b></td></tr>
+            <tr><td><b>商品名</b></td><td>―</td><td>突合結果の目視確認</td></tr>
+            <tr><td><b>売値（税抜）</b></td><td>通常販売価格。セール価格がある場合は別列で</td><td>粗利率の分母</td></tr>
+            <tr><td><b>原価（税抜）</b></td><td>仕入原価。商品別が難しい場合は<b>カテゴリ別の平均原価率でも可</b></td><td>粗利率の分子</td></tr>
+            <tr><td>カテゴリ</td><td>―</td><td>粗利帯×カテゴリでの商品グループ設計</td></tr>
+          </tbody>
+        </table>
+        <div class="note-inline"><b>形式は問いません。</b>基幹システム・在庫管理ツール・Excel台帳のいずれからのCSV／Excel出力でも構いません。<b>全商品でなく、テスト対象候補（主要カテゴリ・売れ筋）に絞った抽出で十分</b>です。<br><b>あわせて確認させてください：</b>粗利の計算に<b>送料・決済手数料・梱包費を含めるか</b>。これらを控除した「限界利益率」で見ると損益分岐ROASは上がるため、どこまでを原価と定義するかで目標値が変わります。</div>
+      </div>
+      <div class="card">
+        <div class="h4sec">前回提案からの方針更新</div>
+        <div class="note-inline" style="margin:0"><b>前回提案（03タブ）では、原価整備を待たずに「粗利率25%の仮置き」で走り出し、実データは配信と並走して精緻化する方針としていました。</b>これは「整備完了を待って施策が止まる」ことを避けるための設計でした。<br>今回、実施が決定し準備期間を確保できることから、<b>初期設計の段階から実データを使う方針へ更新</b>します。理由は、自動入札（目標ROAS）は<b>目標値を途中で変更すると学習がやり直しになる</b>ためです。仮置きで開始して後から実データに差し替えると、その都度学習期間を消費し、3ヶ月の検証期間のうち評価に使える期間が削られます。<b>最初から正しい目標値で学習させるほうが、同じ期間でより確度の高い判定ができます。</b><br>なお、原価データのご提供が難しい場合は、前回提案どおり<b>概算粗利率のヒアリング（30分・帳票不要）による仮置きで開始</b>することも可能です。その場合の判定精度の低下は、あらかじめご承知おきください。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Ask · ご依頼事項</span>
+        <h2 class="sec-title">本日お願いしたい8項目</h2>
+        <p class="sec-note">「担当」は実際に手を動かす主体。<span class="own cl">クライアント</span> は貴社側での操作が必須、<span class="own us">当方</span> は権限さえいただければ当方で完結、<span class="own both">両者</span> は同席・共同作業を要します。</p>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>#</th><th>対象</th><th>お願いする内容</th><th>担当</th><th>これが無いと止まること</th></tr></thead>
+          <tbody>
+            <tr><td class="r">1</td><td><b>Google 広告アカウント</b></td><td>当方アカウントを<b>「管理者」</b>権限で追加。<b>新規2施策の配信は当方アカウントで行う</b>ため、この権限は現状調査・カニバリ確認・P-MAX側の商品除外に使用します</td><td><span class="own cl">クライアント</span></td><td>既存配信との棲み分け設計。<b>カニバリを検知しないまま開始すると、既存P-MAXと新規ショッピングが同じ枠を食い合う</b></tr>
+            <tr><td class="r">2</td><td><b>Google Merchant Center</b></td><td>既存アカウントの有無をご確認のうえ、<b>「管理者」</b>権限で追加。未開設の場合は当方で新規開設を代行（貴社名義）。あわせて<b>当方Adsアカウントとのリンクをご承認</b>ください</td><td><span class="own cl">クライアント</span><br><span class="own us">当方</span></td><td>ショッピング広告・ダイナミック広告<b>の両方</b>。商品データの置き場そのもの</td></tr>
+            <tr><td class="r">3</td><td><b>ウェブサイトのドメイン所有権</b></td><td>Merchant Center の所有権確認。<b>Search Console の権限付与</b>が最短。無い場合はサイトへのHTMLタグ設置またはDNSレコード追加</td><td><span class="own cl">クライアント</span></td><td>Merchant Center が有効化されず、フィード登録に進めない</td></tr>
+            <tr><td class="r">4</td><td><b>Google アナリティクス（GA4）</b></td><td>当方アカウントを<b>「編集者」</b>権限で追加</td><td><span class="own cl">クライアント</span></td><td>流入・行動データの検証、広告アカウントとの連携、オーディエンス作成</td></tr>
+            <tr><td class="r">5</td><td><b>Google タグマネージャー</b></td><td>コンテナへ<b>「公開」権限</b>で追加。未導入の場合はその旨のご共有</td><td><span class="own cl">クライアント</span></td><td>当方アカウント発行の<b>コンバージョンタグと動的リマーケティングタグ</b>の実装（＝成果計測とダイナミック広告の配信）</td></tr>
+            <tr><td class="r">6</td><td><b>ECサイト管理画面</b></td><td>商品データ出力とタグ設置のための管理者権限。<b>制作会社が管理されている場合は、その窓口とご担当者名</b>のご共有で代替可</td><td><span class="own cl">クライアント</span></td><td>商品フィードの生成手段が確定せず、タグ設置の依頼先も不明のままとなる</td></tr>
+            <tr><td class="r">7</td><td><b>商品データ</b></td><td>全商品のCSV出力、または自動生成フィードのURL。<b>商品名・価格・在庫・画像URL・JANコード・カテゴリ</b>を含むもの</td><td><span class="own cl">クライアント</span></td><td>フィード作成。項目の欠落は、そのまま商品の不承認（＝配信対象から除外）に直結</td></tr>
+            <tr><td class="r">8</td><td><b>原価・売値データ</b><br><span class="ptag prep">最重要</span></td><td>テスト対象候補の<b>商品ID（またはJAN）・商品名・売値（税抜）・原価（税抜）・カテゴリ</b>。商品別が難しい場合は<b>カテゴリ別の平均原価率</b>でも可。形式・出力元は問いません</td><td><span class="own cl">クライアント</span></td><td><b>粗利帯グルーピングと目標ROASの設定</b>。これが無いと全商品に同じ目標を設定することになり、粗利の薄い商品で赤字が積み上がる</td></tr>
+          </tbody>
+        </table>
+        <div class="note-inline"><b>権限付与の宛先：</b>94yukey0621@gmail.com<br>すべて<b>招待メールが届いた時点では未完了</b>です。当方側で承諾操作を行って初めて有効になりますので、送信後にご一報ください（当日中に処理いたします）。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Confirm · 会議で確認させてください</span>
+        <h2 class="sec-title">その場で伺いたい10の確認事項</h2>
+        <p class="sec-note">いずれも回答内容によって<b>準備の段取りそのものが変わる</b>項目です。持ち帰りではなく、可能な範囲でその場でのご回答をお願いします。</p>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>確認事項</th><th>回答によって変わること</th></tr></thead>
+          <tbody>
+            <tr><td><b>既存のコンバージョンタグはどう実装されているか</b>（タグマネージャー経由／サイトへ直接記述）</td><td>当方アカウントのCVタグを追加設置する際の作業経路。直接記述されている場合は、タグマネージャーへの集約を先に検討したい</td></tr>
+            <tr><td><b>原価データはどの粒度で出せるか</b>（SKU別／カテゴリ別の平均原価率／出力そのものが困難）</td><td><b>粗利帯グルーピングの精度</b>。SKU別なら設計どおり、カテゴリ別平均ならカテゴリ単位での目標設定、出力困難なら概算ヒアリングによる仮置き運用へ切り替える</td></tr>
+            <tr><td><b>粗利の計算に、送料・決済手数料・梱包費を含めるか</b></td><td><b>損益分岐ROASの水準そのもの</b>。控除する場合は粗利率が下がり、目標ROASは全帯で上振れする。どこまでを原価と定義するかを先に合意したい</td></tr>
+            <tr><td><b>ECサイトのカート／CMSは何をお使いか</b>（Shopify・futureshop・MakeShop・ecbeing・EC-CUBE・独自構築 等）</td><td><b>商品フィードの生成手段</b>が決まる。標準機能で自動生成できるカートなら即日、非対応なら手動CSV運用または連携ツールの導入が必要</td></tr>
+            <tr><td><b>Merchant Center を過去に作成されたことはあるか</b></td><td>既存アカウントがあれば新規開設は不要（重複作成は所有権の競合を招くため避けたい）。過去の代理店が作成したものが残存しているケースが多い</td></tr>
+            <tr><td><b>サイトの改修は社内対応か、制作会社への依頼か</b></td><td>タグ設置のリードタイム。制作会社の場合は<b>本日中に依頼を起票</b>できるよう窓口を確定したい</td></tr>
+            <tr><td><b>Google タグマネージャーは導入済みか</b></td><td>導入済みなら当方作業のみで完結。未導入ならサイトへの初回タグ設置が発生し、上記の制作会社対応と連動する</td></tr>
+            <tr><td><b>各アカウントの管理者は現職の方か</b></td><td>退職者の個人アカウントが唯一の管理者になっている場合、<b>権限譲渡そのものが不能</b>となり、Google への申請を含む復旧作業が必要（数週間規模）</td></tr>
+            <tr><td><b>掲載可能な商品点数（SKU数）はおよそ何点か</b></td><td>対象SKUの選定方針とフィード運用の作り込み度合い。前回提案では50〜100SKUを想定</td></tr>
+            <tr><td><b>既存のP-MAXに商品フィードが紐付いているか</b>（アカウント確認でも判明するが、経緯を伺いたい）</td><td>ショッピング枠での<b>カニバリ（食い合い）対策</b>。P-MAX側の商品除外による棲み分け設計の要否</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">How to · 権限付与の操作手順</span>
+        <h2 class="sec-title">画面上の操作（各3〜5分）</h2>
+        <p class="sec-note">会議後にそのままご操作いただけるよう、クリック順を記載しました。いずれも既存の配信・計測に影響を与える操作ではありません。</p>
+      </div>
+      <div class="dgrid">
+        <div class="diagram">
+          <h4>Google 広告アカウント</h4>
+          <div class="what">付与する権限：<b>管理者</b>／宛先：<b>94yukey0621@gmail.com</b></div>
+          <div class="flow">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx">右上の<b>「ツールと設定」</b>を開く</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx"><b>「管理」→「アクセスとセキュリティ」</b>を選択</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx"><b>「＋」</b>から当方アドレスを入力し、権限に<b>「管理者」</b>を指定して招待</div></div>
+          </div>
+        </div>
+        <div class="diagram">
+          <h4>Merchant Center</h4>
+          <div class="what">付与する権限：<b>管理者</b>／宛先：<b>94yukey0621@gmail.com</b></div>
+          <div class="flow">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx">右上の<b>設定（歯車）→「ユーザー」</b>を開く</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx"><b>「ユーザーを追加」</b>で当方アドレスを入力</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx">権限に<b>「管理者」</b>を指定して送信</div></div>
+          </div>
+        </div>
+        <div class="diagram">
+          <h4>Google アナリティクス（GA4）</h4>
+          <div class="what">付与する権限：<b>編集者</b>／宛先：<b>94yukey0621@gmail.com</b></div>
+          <div class="flow">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx">左下の<b>「管理」</b>を開く</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx">プロパティ列の<b>「プロパティのアクセス管理」</b>を選択</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx">右上<b>「＋」→「ユーザーを追加」</b>、当方アドレスを入力し<b>「編集者」</b>で追加</div></div>
+          </div>
+        </div>
+        <div class="diagram">
+          <h4>Google タグマネージャー</h4>
+          <div class="what">付与する権限：コンテナ<b>「公開」</b>／宛先：<b>94yukey0621@gmail.com</b></div>
+          <div class="flow">
+            <div class="flow-step"><div class="flow-ic">1</div><div class="flow-tx">対象コンテナを開き<b>「管理」</b>タブへ</div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">2</div><div class="flow-tx"><b>「ユーザー管理」→「＋」→「ユーザーを追加」</b></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-step"><div class="flow-ic">3</div><div class="flow-tx">コンテナ権限を<b>「公開」</b>に設定して招待（アカウント権限は「ユーザー」で可）</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="h4sec">Search Console（ドメイン所有権の確認に使用）</div>
+        <div class="note-inline" style="margin:0"><b>既にご利用の場合：</b>プロパティを開き「設定 → ユーザーと権限 → ユーザーを追加」から、当方アドレスを<b>「オーナー」</b>権限で追加。これにより Merchant Center の所有権確認が即座に完了します。<br><b>未導入の場合：</b>サイトの&lt;head&gt;内へのHTMLタグ設置、またはDNSレコードの追加が必要です。<b>DNSはサーバー会社への依頼となり数日を要する</b>ため、この場合は本日中に依頼を起票いただきたい項目となります。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Then · 権限受領後の当方作業</span>
+        <h2 class="sec-title">配信開始までの10営業日</h2>
+        <p class="sec-note">起点（D0）は<b>アクセス権限5系統が揃い、原価・売値データを受領した日</b>。以降は原則として当方側で進行し、貴社のご対応が必要な工程のみ <span class="own cl">クライアント</span> を付記しています。前回提案の <b>Week 0（準備フェーズ）</b>に相当します。</p>
+      </div>
+      <div class="roadmap">
+        <div class="phase prep">
+          <div class="pnode">1</div>
+          <div class="phase-card">
+            <span class="ph-label">D0 – D1 ／ 現状把握</span>
+            <h4>アカウント全体の監査</h4>
+            <table class="tbl">
+              <thead><tr><th>作業</th><th>担当</th><th>完了条件（アウトプット）</th></tr></thead>
+              <tbody>
+                <tr><td>既存P-MAXのフィード紐付け・配信面の確認（カニバリ調査）</td><td><span class="own us">当方</span></td><td>棲み分け方針の提示（P-MAX側の商品除外要否）</td></tr>
+                <tr><td>コンバージョン計測の健全性チェック（重複計測・計測漏れ）</td><td><span class="own us">当方</span></td><td>計測構成の一覧と、不備があれば修正案</td></tr>
+                <tr><td>既存の除外設定・配信設定の棚卸し</td><td><span class="own us">当方</span></td><td>新規キャンペーンへ引き継ぐ設定の確定</td></tr>
+                <tr><td><b>原価・売値データの受領と、商品フィード識別子との突合</b></td><td><span class="own cl">クライアント</span> → <span class="own us">当方</span></td><td>突合率の報告と、原価が欠損している商品のリスト</td></tr>
+              </tbody>
+            </table>
+            <div class="phase-tags"><span class="ptag prep">この工程のみ権限があれば単独で進行可能。他の準備と並行して着手します</span></div>
+          </div>
+        </div>
+        <div class="phase prep">
+          <div class="pnode">2</div>
+          <div class="phase-card">
+            <span class="ph-label">D1 – D3 ／ 基盤構築（クリティカルパス）</span>
+            <h4>Merchant Center の整備</h4>
+            <table class="tbl">
+              <thead><tr><th>作業</th><th>担当</th><th>完了条件（アウトプット）</th></tr></thead>
+              <tbody>
+                <tr><td>アカウント開設または既存アカウントの整備</td><td><span class="own us">当方</span></td><td>貴社名義でのアカウント有効化</td></tr>
+                <tr><td>ドメイン所有権の確認</td><td><span class="own both">両者</span></td><td>確認済みステータスの取得（Search Console 権限があれば当日完了）</td></tr>
+                <tr><td>Merchant Center と当方Adsアカウントのリンク申請・承認</td><td><span class="own us">当方</span> → <span class="own cl">クライアント</span></td><td>MC側でリンク承認済みステータス（承認は1クリック）</td></tr>
+                <tr><td>配送設定・返品ポリシー・ビジネス情報の登録</td><td><span class="own us">当方</span></td><td>審査に必要な必須項目の充足（未設定は不承認の主因）</td></tr>
+                <tr><td>配送料・返品条件の実態ヒアリング（15分）</td><td><span class="own cl">クライアント</span></td><td>サイト表記と一致した設定内容</td></tr>
+              </tbody>
+            </table>
+            <div class="phase-tags"><span class="ptag prep">ここが最長工程。D1に着手できるよう、項目2・3の権限を最優先でお願いします</span></div>
+          </div>
+        </div>
+        <div class="phase prep">
+          <div class="pnode">3</div>
+          <div class="phase-card">
+            <span class="ph-label">D3 – D5 ／ データ整備・計測</span>
+            <h4>商品フィード登録と、リマーケティングタグ設置</h4>
+            <table class="tbl">
+              <thead><tr><th>作業</th><th>担当</th><th>完了条件（アウトプット）</th></tr></thead>
+              <tbody>
+                <tr><td>商品フィードの作成・アップロード</td><td><span class="own us">当方</span></td><td>全対象SKUの登録完了</td></tr>
+                <tr><td>フィード診断のエラー・警告の修正</td><td><span class="own us">当方</span></td><td>致命的エラー0件の状態で審査提出</td></tr>
+                <tr><td>商品審査の通過待ち（<b>3〜5営業日・短縮不可</b>）</td><td>―</td><td>対象SKUの承認率95%以上</td></tr>
+                <tr><td><b>当方アカウント発行のコンバージョンタグの設置</b>（購入完了・購入金額付き）</td><td><span class="own us">当方</span></td><td>テスト購入で計測を確認。<b>既存CVタグとの二重発火・値の重複がないことも併せて検証</b></td></tr>
+                <tr><td>動的リマーケティングタグの設置（ページ種別・商品ID・価格のパラメータ付き。当方アカウント発行）</td><td><span class="own us">当方</span>／制作会社対応の場合は <span class="own cl">クライアント</span></td><td>テスト計測で商品閲覧・カート追加イベントの取得を確認</td></tr>
+                <tr><td><b>粗利帯マスタの作成</b>（帯別の損益分岐ROASと目標ROAS初期値の確定）</td><td><span class="own us">当方</span></td><td>商品別の粗利率一覧と、4段階の粗利帯への割り当て結果</td></tr>
+                <tr><td>粗利の定義すり合わせ（送料・決済手数料・梱包費の控除要否）と、粗利帯マスタのご確認</td><td><span class="own both">両者</span></td><td>目標ROAS初期値へのご承認。原価データが未提供の場合は概算ヒアリング（30分）で代替</td></tr>
+              </tbody>
+            </table>
+            <div class="phase-tags"><span class="ptag prep">審査の待ち時間を他工程で埋めるため、タグ設置とヒアリングをこの期間に並走させます</span></div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnode">4</div>
+          <div class="phase-card">
+            <span class="ph-label">D5 – D8 ／ 構築</span>
+            <h4>キャンペーンの設計・構築</h4>
+            <table class="tbl">
+              <thead><tr><th>作業</th><th>担当</th><th>完了条件（アウトプット）</th></tr></thead>
+              <tbody>
+                <tr><td>対象SKUの選定・商品グループ設計（<b>確定した粗利帯マスタ</b>×カテゴリ）</td><td><span class="own us">当方</span></td><td>対象SKUリストと、商品グループ別の目標ROAS設定値</td></tr>
+                <tr><td>ショッピングキャンペーンの構築（月額¥300,000・指名クエリ除外）</td><td><span class="own us">当方</span></td><td>入稿完了・審査提出</td></tr>
+                <tr><td>ダイナミック広告の構築（配信対象リスト・除外・フリークエンシー上限）</td><td><span class="own us">当方</span></td><td>入稿完了。リスト蓄積量が配信要件に達し次第の開始設定</td></tr>
+                <tr><td>判定基準の最終合意（ショッピング400%／ダイナミック800%）</td><td><span class="own both">両者</span></td><td>前回提案の判定表へのご承認</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="pnode">5</div>
+          <div class="phase-card">
+            <span class="ph-label">D8 – D10 ／ 開始</span>
+            <h4>最終確認と配信開始</h4>
+            <table class="tbl">
+              <thead><tr><th>作業</th><th>担当</th><th>完了条件（アウトプット）</th></tr></thead>
+              <tbody>
+                <tr><td>配信前チェック（予算・入札・除外・計測の最終確認）</td><td><span class="own us">当方</span></td><td>チェックリストの全項目クリア</td></tr>
+                <tr><td>Week 0 ゲートの判定</td><td><span class="own both">両者</span></td><td>前回提案の準備6項目がすべて完了していることの相互確認</td></tr>
+                <tr><td><b>配信開始</b>（3ヶ月／12週の検証期間スタート）</td><td><span class="own us">当方</span></td><td>初日の配信確認と、週次レポートの運用開始</td></tr>
+              </tbody>
+            </table>
+            <div class="phase-tags"><span class="ptag">以降は前回提案（03タブ）の Week 1–12 スケジュールへ移行します</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Risk · 律速要因</span>
+        <h2 class="sec-title">開始が遅れるとすれば、この5つ</h2>
+        <p class="sec-note">いずれも「起きてから対応する」と数日〜数週間を失う項目です。本日の会議で先回りして潰しておきたいものを挙げます。</p>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>リスク</th><th>起きること</th><th>本日の打ち手</th></tr></thead>
+          <tbody>
+            <tr><td><b>管理者が退職者アカウント</b></td><td>権限付与そのものが実行できず、Google への復旧申請で<b>数週間</b>を要する</td><td>会議中に各アカウントへログインし、管理者の実在を確認いただく</td></tr>
+            <tr><td><b>ドメイン所有権確認でDNS作業が発生</b></td><td>サーバー会社への依頼待ちで<b>数日〜1週間</b>。Merchant Center が有効化されず全工程が停止</td><td>Search Console の利用有無を確認。未導入なら本日中にサーバー会社へ起票</td></tr>
+            <tr><td><b>タグ設置が制作会社対応</b></td><td>見積・スケジュール調整で<b>2週間以上</b>かかり、ダイナミック広告のみ開始が遅延</td><td>窓口とご担当者名を確定し、作業内容の説明資料を当方から即日送付</td></tr>
+            <tr><td><b>原価データが揃わない／粒度が粗い</b></td><td>粗利帯グルーピングができず、全商品に統一の目標ROASを設定せざるを得ない。<b>粗利の薄い商品で赤字が積み上がり、検証結果の解釈も歪む</b></td><td>SKU別が難しければ<b>カテゴリ別の平均原価率</b>で代替可能。それも困難なら概算ヒアリング（30分）による仮置きで開始し、後日実データで更新</td></tr>
+            <tr><td><b>商品データの項目欠落</b></td><td>審査で大量に不承認となり、配信母数が痩せたまま検証期間に入る（検証自体が無効化）</td><td>CSVのサンプルを先に共有いただき、必須項目の充足を事前診断</td></tr>
+          </tbody>
+        </table>
+        <div class="takeaway"><span class="tk">Point</span>5項目のうち<b>4項目は、会議中の確認だけで検知できる</b>。検知さえできれば並行して手を打てるため、本日のうちに一通りご確認いただきたい。</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sechead"><span class="eyebrow">Sheet · 情報整理シート</span>
+        <h2 class="sec-title">会議中にご記入いただく一覧</h2>
+        <p class="sec-note">この表が埋まった時点で、当方は着手可能な状態になります。会議後の宿題を残さないことを目標とします。</p>
+      </div>
+      <div class="card">
+        <table class="tbl">
+          <thead><tr><th>項目</th><th>ご記入内容</th><th>ご担当</th><th>期限</th></tr></thead>
+          <tbody>
+            <tr><td>Google 広告アカウント ID</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>Merchant Center の有無／アカウント ID</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>ECサイトのカート／CMS 名</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>サイト改修の担当（社内／制作会社名・連絡先）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>Google タグマネージャーの導入有無／コンテナ ID</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>Search Console の利用有無</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>商品点数（SKU数）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>原価データの出力粒度（SKU別／カテゴリ別平均／困難）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>粗利の定義（送料・決済手数料・梱包費を控除するか）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>会議当日</td></tr>
+            <tr><td>商品データ（CSV／フィードURL）のご提供</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>翌営業日</td></tr>
+            <tr><td><b>原価・売値データのご提供</b>（商品ID・売値・原価・カテゴリ）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td><b>翌営業日</b></td></tr>
+            <tr><td>5系統の権限付与の完了</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>翌営業日</td></tr>
+            <tr><td>配送料・返品ポリシーのヒアリング日程</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>3営業日以内</td></tr>
+            <tr><td>粗利帯マスタのご確認日程（目標ROAS初期値の承認）</td><td><span class="blankline"></span></td><td><span class="blankline"></span></td><td>5営業日以内</td></tr>
+          </tbody>
+        </table>
+        <div class="takeaway"><span class="tk">結論</span>お願いするのは<b>アクセス権限5系統（広告・Merchant Center・アナリティクス・タグマネージャー・ECサイト）と、ドメイン所有権の確認・商品データ・原価売値データの3点</b>。権限付与の画面操作は合計およそ60分。<b>このうち最も重要なのは原価・売値データ</b>で、これが揃うかどうかで「粗利帯ごとに目標ROASを設計できるか、全商品を統一目標で回すか」が決まる。そこから<b>最短10営業日で配信を開始</b>し、前回提案の3ヶ月検証（ショッピング¥300,000＋ダイナミック¥200,000）へ移行する。</div>
+      </div>
+    </section>
+    
+  </div><!-- /panel-prep -->
 </div>
 <script>
 (function () {
@@ -1168,7 +1595,8 @@ html{scroll-behavior:smooth;-webkit-print-color-adjust:exact;print-color-adjust:
   var panels = {
     report: document.getElementById('panel-report'),
     proposal: document.getElementById('panel-proposal'),
-    proposal2: document.getElementById('panel-proposal2')
+    proposal2: document.getElementById('panel-proposal2'),
+    prep: document.getElementById('panel-prep')
   };
   function fade(el) {
     if (reduce) return;
